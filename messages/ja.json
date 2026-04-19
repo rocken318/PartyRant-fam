@@ -80,8 +80,17 @@
   "newGame": {
     "title": "ゲームを作成",
     "gameTypeSectionLabel": "ゲームタイプ",
+    "triviaLabel": "クイズ",
     "triviaDescription": "正解でポイント獲得",
+    "pollingLabel": "実態調査",
     "pollingDescription": "全ての投票が有効",
+    "opinionLabel": "多数派/少数派",
+    "opinionDescription": "多数派or少数派が負け",
+    "loseRuleSectionLabel": "負けルール",
+    "loseRuleMinority": "🦄 少数派が負け",
+    "loseRuleMinorityDesc": "少ない方を選んだ人が負け",
+    "loseRuleMajority": "🐑 多数派が負け",
+    "loseRuleMajorityDesc": "多い方を選んだ人が負け",
     "playModeSectionLabel": "プレイモード",
     "liveLabel": "ライブ",
     "liveDescription": "ホストが進行を管理",
@@ -121,7 +130,12 @@
     "startButton": "🚀 このゲームで遊ぶ",
     "starting": "準備中...",
     "empty": "プリセットがまだありません",
-    "noResults": "条件に合うゲームがありません"
+    "noResults": "条件に合うゲームがありません",
+    "randomTitle": "🎲 ランダムアンケート",
+    "randomSubtitle": "プリセットの質問からランダムで10問出題！",
+    "randomMinority": "🦄 少数派が負け",
+    "randomMajority": "🐑 多数派が負け",
+    "randomStarting": "ゲーム作成中..."
   },
   "hostGame": {
     "startGame": "🚀 ゲーム開始（{count} 人）",
@@ -138,7 +152,14 @@
     "openingLobby": "ロビーを開いています...",
     "openLobby": "ロビーを開く",
     "notFound": "ゲームが見つかりません",
-    "createNew": "新しいゲームを作成"
+    "createNew": "新しいゲームを作成",
+    "opinionReveal": "💀 判定！",
+    "opinionMinorityRule": "少数派が負けゲーム",
+    "opinionMajorityRule": "多数派が負けゲーム",
+    "opinionLoseCount": "{count}回 負け側",
+    "opinionLoser": "最多 負け",
+    "opinionWinner": "最少 負け",
+    "opinionNoAnswers": "0回"
   },
   "metadata": {
     "title": "PartyRant",

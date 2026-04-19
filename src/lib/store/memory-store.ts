@@ -46,6 +46,7 @@ export class MemoryStore implements GameStore {
       mode: input.mode,
       gameMode: input.gameMode ?? 'live',
       title: input.title,
+      loseRule: input.loseRule,
       questions: input.questions.map((q, i) => ({
         ...q,
         id: generateId(),

@@ -1,0 +1,410 @@
+[
+  {
+    "scene": "多数派クイズ",
+    "title": "多数派バトル！直感二択100%",
+    "mode": "polling",
+    "description": "まずはここから。犬派？猫派？みたいな超定番の二択で、一気に場を温める王道セット。",
+    "questions": [
+      {
+        "text": "犬派？猫派？",
+        "options": ["犬派", "猫派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "朝型？夜型？",
+        "options": ["朝型", "夜型"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "インドア派？アウトドア派？",
+        "options": ["インドア派", "アウトドア派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "海派？山派？",
+        "options": ["海派", "山派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "お風呂は長風呂派？サッと派？",
+        "options": ["長風呂派", "サッと派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "スマホはiPhone派？Android派？",
+        "options": ["iPhone派", "Android派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "映画館派？家で観る派？",
+        "options": ["映画館派", "家で観る派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "旅行は計画派？ノープラン派？",
+        "options": ["計画派", "ノープラン派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "連絡は電話派？メッセージ派？",
+        "options": ["電話派", "メッセージ派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "告白するなら自分から派？されたい派？",
+        "options": ["自分から派", "されたい派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "食べ物論争！それ多数派どっち？",
+    "mode": "polling",
+    "description": "食の好みは盛り上がる。正解がないのに全員しゃべりたくなる、鉄板の飯テロ系多数派クイズ。",
+    "questions": [
+      {
+        "text": "白米派？パン派？",
+        "options": ["白米派", "パン派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "きのこの山派？たけのこの里派？",
+        "options": ["きのこの山派", "たけのこの里派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "目玉焼きには醤油派？ソース派？",
+        "options": ["醤油派", "ソース派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "カレーは甘口派？中辛以上派？",
+        "options": ["甘口派", "中辛以上派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ラーメンはあっさり派？こってり派？",
+        "options": ["あっさり派", "こってり派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "唐揚げにレモン、かける派？かけない派？",
+        "options": ["かける派", "かけない派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "ポテトは細い派？太い派？",
+        "options": ["細い派", "太い派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "寿司で最初に食べるなら？",
+        "options": ["好きなネタから", "あっさり系から", "定番から"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "プリンはかため派？とろとろ派？",
+        "options": ["かため派", "とろとろ派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "飲み会の締めはラーメン派？デザート派？帰宅派？",
+        "options": ["ラーメン派", "デザート派", "そのまま帰宅派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "休日の過ごし方、多数派どっち？",
+    "mode": "polling",
+    "description": "ライフスタイル系の定番セット。価値観が見えて、初対面でも会話が広がる。",
+    "questions": [
+      {
+        "text": "休日は家でゴロゴロ派？外出したい派？",
+        "options": ["家でゴロゴロ派", "外出したい派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "旅行するなら国内派？海外派？",
+        "options": ["国内派", "海外派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "遊園地なら絶叫系乗る派？見てる派？",
+        "options": ["乗る派", "見てる派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "服を買うなら店で見る派？ネット派？",
+        "options": ["店で見る派", "ネット派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "寝る時は真っ暗派？少し明かり欲しい派？",
+        "options": ["真っ暗派", "少し明かり欲しい派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "部屋はきれい好き派？多少散らかってても平気派？",
+        "options": ["きれい好き派", "多少散らかってても平気派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "財布は現金派？キャッシュレス派？",
+        "options": ["現金派", "キャッシュレス派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "買い物は即決派？めっちゃ悩む派？",
+        "options": ["即決派", "めっちゃ悩む派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "朝ごはんは食べる派？食べない派？",
+        "options": ["食べる派", "食べない派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "休みの日の理想は？",
+        "options": ["朝から充実", "昼からのんびり", "予定ゼロが最高"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "恋愛と人間関係の多数派チェック",
+    "mode": "polling",
+    "description": "ちょい本音が見える恋愛・コミュニケーション系。重すぎず盛り上がるラインで設計。",
+    "questions": [
+      {
+        "text": "恋人とは毎日連絡したい派？必要な時だけ派？",
+        "options": ["毎日連絡したい派", "必要な時だけ派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "デートは割り勘派？多めに出したい派？",
+        "options": ["割り勘派", "多めに出したい派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "恋人にするなら顔重視？性格重視？",
+        "options": ["顔重視", "性格重視"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "好きになりやすいのは、一目惚れ派？じわじわ派？",
+        "options": ["一目惚れ派", "じわじわ派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "友達は広く浅く派？狭く深く派？",
+        "options": ["広く浅く派", "狭く深く派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ケンカしたらすぐ話したい派？少し時間置きたい派？",
+        "options": ["すぐ話したい派", "少し時間置きたい派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "サプライズされたい派？事前に知りたい派？",
+        "options": ["されたい派", "事前に知りたい派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "結婚式するなら盛大に派？身内だけ派？",
+        "options": ["盛大に派", "身内だけ派", "しなくてもいい派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "恋人に嫉妬するのはアリ派？ナシ派？",
+        "options": ["アリ派", "ナシ派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "告白の理想は？",
+        "options": ["直接言ってほしい", "LINEでもOK", "自然に付き合いたい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "学生・仕事・日常あるある多数派戦",
+    "mode": "polling",
+    "description": "学生でも社会人でも混ざって遊びやすい、日常のあるある質問を中心にしたセット。",
+    "questions": [
+      {
+        "text": "締切はコツコツ派？ギリギリ派？",
+        "options": ["コツコツ派", "ギリギリ派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "寝坊した時、まずすることは？",
+        "options": ["急いで準備", "一旦現実逃避", "言い訳を考える"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "会議や授業、前の席派？後ろの席派？",
+        "options": ["前の席派", "後ろの席派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "メモは手書き派？スマホ・PC派？",
+        "options": ["手書き派", "スマホ・PC派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "昼休みは一人でゆっくり派？みんなで過ごす派？",
+        "options": ["一人でゆっくり派", "みんなで過ごす派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "課題や仕事は静かな場所派？音楽あり派？",
+        "options": ["静かな場所派", "音楽あり派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "プレッシャーに強い方？本番に弱い方？",
+        "options": ["強い方", "本番に弱い方"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "人前で話すの得意？苦手？",
+        "options": ["得意", "苦手"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "朝の通勤通学、音楽聴く派？何も聴かない派？",
+        "options": ["音楽聴く派", "何も聴かない派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "仕事や勉強で大事なのは？",
+        "options": ["才能", "努力", "継続", "要領の良さ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "エンタメ・センス多数派ジャッジ",
+    "mode": "polling",
+    "description": "音楽・映画・SNS・遊び方など、センスや好みが分かれる質問を集めた盛り上がり重視セット。",
+    "questions": [
+      {
+        "text": "音楽は歌詞重視派？メロディ重視派？",
+        "options": ["歌詞重視派", "メロディ重視派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "映画なら泣ける系派？笑える系派？",
+        "options": ["泣ける系派", "笑える系派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ホラー映画、観られる派？無理派？",
+        "options": ["観られる派", "無理派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "カラオケで歌うの好き派？聴くの好き派？",
+        "options": ["歌うの好き派", "聴くの好き派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "SNSは投稿する派？見る専派？",
+        "options": ["投稿する派", "見る専派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ゲームするなら一人でじっくり派？みんなでワイワイ派？",
+        "options": ["一人でじっくり派", "みんなでワイワイ派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "漫画は紙派？電子派？",
+        "options": ["紙派", "電子派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "推し活するなら、現場派？在宅派？",
+        "options": ["現場派", "在宅派"],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "写真撮る時、自撮り派？他撮り派？",
+        "options": ["自撮り派", "他撮り派"],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "一日だけ有名人になれるなら？",
+        "options": ["俳優・女優", "アーティスト", "スポーツ選手", "インフルエンサー"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  }
+]

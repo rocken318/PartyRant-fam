@@ -15,8 +15,9 @@ const questionSchema = z.object({
 
 const createGameSchema = z.object({
   eventId: z.string().min(1),
-  mode: z.enum(['trivia', 'polling']),
+  mode: z.enum(['trivia', 'polling', 'opinion']),
   gameMode: z.enum(['live', 'self_paced']).default('live'),
+  loseRule: z.enum(['minority', 'majority']).optional(),
   title: z.string().min(1),
   questions: z.array(questionSchema).min(1),
 });

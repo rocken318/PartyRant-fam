@@ -1530,5 +1530,233 @@
         "timeLimitSec": 15
       }
     ]
+  },
+  {
+    "scene": "みんなで",
+    "title": "🦄 少数派はだれだ！ — ベーシック編",
+    "mode": "opinion",
+    "loseRule": "minority",
+    "description": "少数派を選んだ人が負け！みんなと違う答えを選びすぎた人が判定される定番ゲーム。",
+    "questions": [
+      {
+        "text": "犬派？猫派？",
+        "options": ["🐶 犬派", "🐱 猫派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "朝型？夜型？",
+        "options": ["🌅 朝型", "🌙 夜型"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "インドア派？アウトドア派？",
+        "options": ["🏠 インドア", "⛺ アウトドア"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "甘いもの派？しょっぱいもの派？",
+        "options": ["🍰 甘いもの", "🍟 しょっぱいもの"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "夏派？冬派？",
+        "options": ["☀️ 夏", "❄️ 冬"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "海派？山派？",
+        "options": ["🏖️ 海", "🏔️ 山"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "お風呂派？シャワー派？",
+        "options": ["🛁 お風呂", "🚿 シャワー"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "映画館派？自宅で配信派？",
+        "options": ["🎬 映画館", "📺 自宅で配信"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "ラーメンに入れるなら？",
+        "options": ["🥚 煮卵", "🌽 コーン"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "スマホはiPhone派？Android派？",
+        "options": ["🍎 iPhone", "🤖 Android"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "みんなで",
+    "title": "🐑 多数派はだれだ！ — 空気読めない選手権",
+    "mode": "opinion",
+    "loseRule": "majority",
+    "description": "多数派（空気を読んだ人）が負け！あえて逆張りする勇気が試される逆転ゲーム。",
+    "questions": [
+      {
+        "text": "休日の過ごし方は？",
+        "options": ["🛌 家でゴロゴロ", "🏃 外で活動"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "旅行するなら？",
+        "options": ["✈️ 海外", "🚅 国内"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "ごはんはどっち派？",
+        "options": ["🍚 白ごはん", "🍞 パン"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "SNSでよく使うのは？",
+        "options": ["📸 Instagram", "🐦 X（Twitter）"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "音楽を聴くのは？",
+        "options": ["🎧 ひとりで集中して", "👥 友達と一緒に"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "カラオケでするのは？",
+        "options": ["🎤 全力で歌う", "😄 盛り上げ役に徹する"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "食事のペースは？",
+        "options": ["⚡ 早食い", "🐢 ゆっくり味わう"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "感情表現は？",
+        "options": ["😭 すぐ顔に出る", "😐 ポーカーフェイス"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "合コン・街コン",
+    "title": "⚔️ 恋愛観バトル — 少数派が負け！",
+    "mode": "opinion",
+    "loseRule": "minority",
+    "description": "恋愛の価値観でみんなと合わなかった人が判定！意外な一面も見えてくるかも？",
+    "questions": [
+      {
+        "text": "告白するのは？",
+        "options": ["💪 自分からする派", "🙈 待つ派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "デートの場所を決めるのは？",
+        "options": ["🙋 自分で決めたい", "🤷 相手に任せたい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "連絡頻度は？",
+        "options": ["📱 毎日LINEしたい", "😌 必要なときだけでOK"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "付き合ってから会う頻度は？",
+        "options": ["💑 週2〜3回以上", "🗓️ 週1くらいでちょうどいい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "喧嘩したとき、どうする？",
+        "options": ["🗣️ その場で話し合う", "🧊 少し時間をおく"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "記念日は？",
+        "options": ["🎂 ちゃんと祝いたい", "😊 なくてもOK"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "理想の関係は？",
+        "options": ["🫂 べったり一緒にいたい", "🌈 適度な距離感がいい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "⚔️ 職場あるある — 少数派が負け！",
+    "mode": "opinion",
+    "loseRule": "minority",
+    "description": "職場での価値観や行動パターンで少数派になった人が判定！仕事スタイルの違いが丸わかり。",
+    "questions": [
+      {
+        "text": "仕事するなら？",
+        "options": ["🏢 出社派", "🏠 リモート派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "ランチはどっち？",
+        "options": ["👥 同僚と一緒に", "🎧 ひとりでゆっくり"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "仕事の進め方は？",
+        "options": ["⚡ 締め切り前にパパッと", "📅 早めにコツコツ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "会議は？",
+        "options": ["💬 発言多め", "👂 聞き役に徹する"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "上司へのホウレンソウは？",
+        "options": ["📣 こまめに報告", "🎯 完成してからまとめて"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "飲み会の二次会は？",
+        "options": ["🙋 参加したい", "🏃 帰りたい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "理想の職場環境は？",
+        "options": ["🤝 チームワーク重視", "🎯 個人の裁量が大きい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
   }
 ]

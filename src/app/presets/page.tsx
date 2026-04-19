@@ -7,6 +7,8 @@ import { useTranslations } from 'next-intl';
 import type { Game } from '@/types/domain';
 
 const SCENE_META: Record<string, { icon: string; color: string }> = {
+  'みんなで':       { icon: '🎉', color: '#8B5CF6' },
+  '多数派クイズ':   { icon: '⚔️', color: '#F97316' },
   '結婚式':         { icon: '💍', color: '#FF0080' },
   '合コン':         { icon: '💕', color: '#FF6B9D' },
   'カップル':       { icon: '🫶', color: '#FF4D6D' },
@@ -19,8 +21,9 @@ const SCENE_META: Record<string, { icon: string; color: string }> = {
 };
 
 const TYPE_META: Record<string, { label: string; icon: string; color: string }> = {
-  trivia:  { label: 'クイズ',    icon: '🧠', color: '#3B82F6' },
-  polling: { label: '実態調査', icon: '📊', color: '#FF0080' },
+  trivia:  { label: 'クイズ',        icon: '🧠', color: '#3B82F6' },
+  polling: { label: '実態調査',     icon: '📊', color: '#FF0080' },
+  opinion: { label: '多数派/少数派', icon: '⚔️', color: '#8B5CF6' },
 };
 
 export default function PresetsPage() {
@@ -29,6 +32,7 @@ export default function PresetsPage() {
   const [presets, setPresets] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
   const [starting, setStarting] = useState<string | null>(null);
+  const [randomStarting, setRandomStarting] = useState<'minority' | 'majority' | null>(null);
   const [selectedScene, setSelectedScene] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
@@ -56,6 +60,22 @@ export default function PresetsPage() {
       router.push(`/play/${game.id}`);
     } catch {
       setStarting(null);
+    }
+  }
+
+  async function handleRandom(loseRule: 'minority' | 'majority') {
+    setRandomStarting(loseRule);
+    try {
+      const res = await fetch('/api/opinion/random', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ loseRule, count: 10 }),
+      });
+      if (!res.ok) throw new Error();
+      const game = await res.json() as Game;
+      router.push(`/play/${game.id}`);
+    } catch {
+      setRandomStarting(null);
     }
   }
 
@@ -87,6 +107,40 @@ export default function PresetsPage() {
           </div>
         ) : (
           <>
+            {/* ── ランダムアンケート ── */}
+            <div className="bg-pr-dark rounded-[10px] border-[3px] border-pr-dark shadow-[4px_4px_0_#111] overflow-hidden">
+              <div className="px-4 py-3 flex items-center gap-3">
+                <span className="text-2xl">🎲</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-bold text-base leading-tight" style={{ fontFamily: 'var(--font-dm)' }}>
+                    {t('randomTitle')}
+                  </p>
+                  <p className="text-gray-400 text-xs mt-0.5">{t('randomSubtitle')}</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-0 border-t-[2px] border-white/10">
+                {(['minority', 'majority'] as const).map(rule => (
+                  <button
+                    key={rule}
+                    type="button"
+                    onClick={() => handleRandom(rule)}
+                    disabled={randomStarting !== null || starting !== null}
+                    className={[
+                      'h-12 font-bold text-sm touch-manipulation transition-colors disabled:opacity-50',
+                      rule === 'minority'
+                        ? 'bg-pr-pink text-white border-r-[1px] border-white/10 hover:bg-pr-pink/90'
+                        : 'bg-white/10 text-white hover:bg-white/20',
+                    ].join(' ')}
+                    style={{ fontFamily: 'var(--font-dm)' }}
+                  >
+                    {randomStarting === rule
+                      ? t('randomStarting')
+                      : rule === 'minority' ? t('randomMinority') : t('randomMajority')}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* ── シーンフィルター ── */}
             {scenes.length > 0 && (
               <div className="flex flex-col gap-1.5">

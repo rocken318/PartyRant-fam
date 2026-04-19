@@ -1,4 +1,5 @@
-export type GameType = 'trivia' | 'polling';   // what kind of game
+export type GameType = 'trivia' | 'polling' | 'opinion';   // what kind of game
+export type LoseRule = 'minority' | 'majority';  // opinion mode: who loses
 export type PlayMode = 'live' | 'self_paced';  // how it's played
 
 /** @deprecated use GameType */
@@ -39,6 +40,7 @@ export interface Game {
   description?: string;
   scene?: string;
   isPreset?: boolean;
+  loseRule?: LoseRule;
   questions: Question[];
   status: GameStatus;
   currentQuestionIndex: number;
