@@ -135,7 +135,10 @@
     "randomSubtitle": "プリセットの質問からランダムで10問出題！",
     "randomMinority": "🦄 少数派が負け",
     "randomMajority": "🐑 多数派が負け",
-    "randomStarting": "ゲーム作成中..."
+    "randomStarting": "ゲーム作成中...",
+    "previewButton": "中身を見る",
+    "previewClose": "閉じる",
+    "previewQuestionCount": "全{{count}}問"
   },
   "hostGame": {
     "startGame": "🚀 ゲーム開始（{count} 人）",
