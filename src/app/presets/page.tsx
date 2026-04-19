@@ -373,7 +373,7 @@ export default function PresetsPage() {
               <div className="flex flex-col gap-3">
                 {filtered.map(preset => {
                   const sceneMeta = SCENE_META[preset.scene ?? ''] ?? { icon: '🎉', color: '#FF0080' };
-                  const typeMeta = TYPE_META[preset.mode];
+                  const typeMeta = TYPE_META[preset.mode] ?? TYPE_META['polling'];
                   const isStarting = starting === preset.id;
                   return (
                     <div key={preset.id}
