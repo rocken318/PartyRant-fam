@@ -652,55 +652,55 @@
         "text": "日本人の平均初デート代はいくら？",
         "options": [
           "約3,000円",
-          "約6,000円",
           "約10,000円",
+          "約6,000円",
           "約15,000円"
         ],
-        "correctIndex": 1,
+        "correctIndex": 2,
         "timeLimitSec": 20
       },
       {
         "text": "日本人の初婚年齢（男性）の平均は？",
         "options": [
-          "約28歳",
           "約31歳",
+          "約28歳",
           "約34歳",
           "約37歳"
         ],
-        "correctIndex": 1,
+        "correctIndex": 0,
         "timeLimitSec": 20
       },
       {
         "text": "結婚指輪の平均購入金額は？",
         "options": [
           "約10万円",
-          "約25万円",
           "約50万円",
+          "約25万円",
           "約100万円"
         ],
-        "correctIndex": 1,
+        "correctIndex": 2,
         "timeLimitSec": 20
       },
       {
         "text": "恋人にバレンタインで渡される平均額は？",
         "options": [
           "約2,000円",
-          "約5,000円",
           "約8,000円",
-          "約12,000円"
+          "約12,000円",
+          "約5,000円"
         ],
-        "correctIndex": 1,
+        "correctIndex": 3,
         "timeLimitSec": 15
       },
       {
         "text": "カップル成立までの平均デート回数は？",
         "options": [
-          "1〜2回",
           "3〜4回",
+          "1〜2回",
           "5〜6回",
           "7回以上"
         ],
-        "correctIndex": 1,
+        "correctIndex": 0,
         "timeLimitSec": 15
       }
     ]
@@ -2849,132 +2849,6 @@
           "🎯 個人の裁量が大きい"
         ],
         "correctIndex": null,
-        "timeLimitSec": 15
-      }
-    ]
-  },
-  {
-    "scene": "勉強",
-    "title": "英単語チャレンジ（準備中）",
-    "mode": "trivia",
-    "description": "英単語の意味を当てよう！問題は随時追加予定。",
-    "questions": [
-      {
-        "text": "「apple」の意味は？",
-        "options": [
-          "りんご",
-          "みかん",
-          "ぶどう",
-          "もも"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "「book」の意味は？",
-        "options": [
-          "本",
-          "鞄",
-          "机",
-          "椅子"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "「water」の意味は？",
-        "options": [
-          "水",
-          "火",
-          "土",
-          "風"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "「friend」の意味は？",
-        "options": [
-          "友達",
-          "家族",
-          "先生",
-          "敵"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "「music」の意味は？",
-        "options": [
-          "音楽",
-          "映画",
-          "絵画",
-          "料理"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      }
-    ]
-  },
-  {
-    "scene": "勉強",
-    "title": "一般常識クイズ（準備中）",
-    "mode": "trivia",
-    "description": "知ってて当たり前？意外と知らない一般常識を出題！問題は随時追加予定。",
-    "questions": [
-      {
-        "text": "日本の首都は？",
-        "options": [
-          "東京",
-          "大阪",
-          "名古屋",
-          "福岡"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "1年は何日？",
-        "options": [
-          "365日",
-          "360日",
-          "364日",
-          "366日"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "水の沸点は？",
-        "options": [
-          "100℃",
-          "90℃",
-          "80℃",
-          "120℃"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "富士山の高さは？",
-        "options": [
-          "3776m",
-          "3726m",
-          "3800m",
-          "3650m"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "太陽系で一番大きい惑星は？",
-        "options": [
-          "木星",
-          "土星",
-          "天王星",
-          "海王星"
-        ],
-        "correctIndex": 0,
         "timeLimitSec": 15
       }
     ]
@@ -7862,105 +7736,6 @@
   },
   {
     "scene": "多数派クイズ",
-    "title": "🌈 多様性・パーパス・価値観",
-    "mode": "polling",
-    "description": "多様化する生き方。自分らしさや社会問題へのスタンス。",
-    "questions": [
-      {
-        "text": "ジェンダーレスな服装やコスメ、取り入れてる？",
-        "options": [
-          "取り入れてる",
-          "気にしていない"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 10
-      },
-      {
-        "text": "結婚しなくても、一生一人で幸せになれると思う？",
-        "options": [
-          "思う",
-          "やはり結婚はしたい"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 12
-      },
-      {
-        "text": "子どもを持たない人生（DINKsなど）の選択、アリだと思う？",
-        "options": [
-          "アリ",
-          "ナシ"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 10
-      },
-      {
-        "text": "モノを持たない「ミニマリスト」な生活に憧れる？",
-        "options": [
-          "憧れる",
-          "たくさん好きなモノに囲まれたい"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 12
-      },
-      {
-        "text": "環境問題（SDGsなど）を意識して買い物をしている？",
-        "options": [
-          "意識している（エコバッグ等）",
-          "あまり気にしていない"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 12
-      },
-      {
-        "text": "ニュースを見て「政治や社会を変えたい」と強く思う？",
-        "options": [
-          "思う",
-          "自分には変えられないと思う"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 12
-      },
-      {
-        "text": "地方移住や、二拠点生活（デュアルライフ）に興味はある？",
-        "options": [
-          "ある",
-          "都会に住み続けたい"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 10
-      },
-      {
-        "text": "自分は「繊細さん（HSP）」気質があると思う？",
-        "options": [
-          "すごく思う",
-          "少し思う",
-          "全く思わない"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 12
-      },
-      {
-        "text": "飲み会で「お酒を飲まない（ソーバーキュリアス）」選択はアリ？",
-        "options": [
-          "アリ（ソフトドリンクで十分）",
-          "ナシ（お酒の場なんだから飲むべき）"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 12
-      },
-      {
-        "text": "これからの日本、明るいと思う？",
-        "options": [
-          "明るいと思う",
-          "不安しかない"
-        ],
-        "correctIndex": null,
-        "timeLimitSec": 10
-      }
-    ]
-  },
-  {
-    "scene": "多数派クイズ",
     "title": "🍩 最新カルチャー・MBTI・食ブーム",
     "mode": "polling",
     "description": "流行りのスイーツから性格診断まで、ミーハー度をチェック。",
@@ -10418,124 +10193,6 @@
   },
   {
     "scene": "雑学クイズ",
-    "title": "🏛️ 神話・伝承の真実",
-    "mode": "trivia",
-    "description": "古代の人々が紡いだ物語の裏側。神話の常識を覆すクイズ。",
-    "questions": [
-      {
-        "text": "メデューサの首を切り落とした英雄ペルセウス。その首を入れた魔法の袋の名前は？",
-        "options": [
-          "イージス",
-          "キビシス",
-          "タルタロス",
-          "ハデス"
-        ],
-        "correctIndex": 1,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "北欧神話において、神々と巨人族が戦い、世界が滅亡する「最終戦争」の名前は？",
-        "options": [
-          "ハルマゲドン",
-          "ラグナロク",
-          "アポカリプス",
-          "ヴァルハラ"
-        ],
-        "correctIndex": 1,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "日本の三種の神器。「八咫鏡（やたのかがみ）」「八尺瓊勾玉（やさかにのまがたま）」と、あと一つは？",
-        "options": [
-          "天叢雲剣（草薙剣）",
-          "布都御魂（ふつのみたま）",
-          "天沼矛（あめのぬぼこ）",
-          "十拳剣（とつかのつるぎ）"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "アーサー王の伝説の剣「エクスカリバー」。実は剣そのものよりも「鞘（さや）」の方が価値があると言われました。鞘の能力は？",
-        "options": [
-          "持ち主が老いなくなる",
-          "持ち主が血を流さなくなる（傷が治る）",
-          "どんな魔法も跳ね返す",
-          "鞘から抜くたびに黄金が生まれる"
-        ],
-        "correctIndex": 1,
-        "timeLimitSec": 20
-      },
-      {
-        "text": "ギリシャ神話で、パンドラが開けてしまった「災いの箱」。あらゆる災厄が飛び出した後、一番底に最後に残っていたものは？",
-        "options": [
-          "絶望",
-          "愛",
-          "希望",
-          "死"
-        ],
-        "correctIndex": 2,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "キューピッド（エロス）が持つ2種類の矢。「金の矢」に射られると激しい恋に落ちますが、「鉛の矢」に射られるとどうなる？",
-        "options": [
-          "相手を殺したくなる",
-          "恋を嫌悪する（拒絶する）ようになる",
-          "永遠の眠りにつく",
-          "石になってしまう"
-        ],
-        "correctIndex": 1,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "古代エジプト神話の死者の神「アヌビス」。彼の頭は何の動物？",
-        "options": [
-          "ワニ",
-          "ハヤブサ",
-          "ジャッカル（犬）",
-          "猫"
-        ],
-        "correctIndex": 2,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "伝説の生き物「ユニコーン（一角獣）」。その角にはどんな力があると信じられていた？",
-        "options": [
-          "空を飛べる",
-          "毒を浄化する",
-          "未来が見える",
-          "不老不死になる"
-        ],
-        "correctIndex": 1,
-        "timeLimitSec": 15
-      },
-      {
-        "text": "『西遊記』で孫悟空が使う武器「如意金箍棒（如意棒）」。もともとは何のために作られた道具だった？",
-        "options": [
-          "海の深さを測るための重り（定規）",
-          "天を支えるための柱",
-          "竜王の背骨",
-          "神様が餅をつくための杵（きね）"
-        ],
-        "correctIndex": 0,
-        "timeLimitSec": 20
-      },
-      {
-        "text": "吸血鬼（ヴァンパイア）が「鏡に映らない」とされる伝統的な理由は？",
-        "options": [
-          "太陽の光を反射するものが苦手だから",
-          "魂がないため、魂を映すとされる鏡には映らないから",
-          "鏡は銀で作られており、銀が弱点だから",
-          "呪いで透明になっているから"
-        ],
-        "correctIndex": 1,
-        "timeLimitSec": 20
-      }
-    ]
-  },
-  {
-    "scene": "雑学クイズ",
     "title": "☠️ 危険生物と猛毒の科学",
     "mode": "trivia",
     "description": "自然界の殺し屋たち。致死量と生存戦略のガチ雑学。",
@@ -12773,6 +12430,250 @@
         ],
         "correctIndex": 3,
         "timeLimitSec": 10
+      }
+    ]
+  },
+  {
+    "scene": "みんなで",
+    "title": "🍕 定番論争！少数派が負け",
+    "mode": "opinion",
+    "loseRule": "minority",
+    "description": "みんながどっちを選ぶか予測しながら回答！少数派になったら負け。定番の二択で盛り上がろう。",
+    "questions": [
+      {
+        "text": "朝ごはん、パン派？ご飯派？",
+        "options": [
+          "パン派",
+          "ご飯派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "カラオケ、好き派？苦手派？",
+        "options": [
+          "好き派",
+          "苦手派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "休日の理想は？",
+        "options": [
+          "外で遊びたい",
+          "家でゆっくりしたい"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "コーヒー派？お茶派？",
+        "options": [
+          "コーヒー派",
+          "お茶派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ラーメンはしょうゆ派？味噌派？",
+        "options": [
+          "しょうゆ派",
+          "味噌派",
+          "とんこつ派",
+          "塩派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "寝るときは電気消す？つけたまま？",
+        "options": [
+          "完全に消す",
+          "少し明かりが欲しい"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "映画、泣ける系 vs 笑える系、好みは？",
+        "options": [
+          "泣ける系",
+          "笑える系"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "旅行は計画を立てたい派？勢いで行く派？",
+        "options": [
+          "計画派",
+          "勢いで行く派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      }
+    ]
+  },
+  {
+    "scene": "みんなで",
+    "title": "🎯 空気読み選手権！多数派を当てろ",
+    "mode": "opinion",
+    "loseRule": "minority",
+    "description": "場の空気を読んで多数派に乗れ！KY（空気読めない）になったら負け！",
+    "questions": [
+      {
+        "text": "飲み会の幹事、やりたい？",
+        "options": [
+          "やりたい！",
+          "できればやりたくない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "LINEの既読スルー、されたことある？",
+        "options": [
+          "ある（された）",
+          "ない・気にしない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "スマホ中毒だと思う？",
+        "options": [
+          "思う（依存気味）",
+          "思わない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "プレゼントを渡すとき、本人の前で開けてほしい派？",
+        "options": [
+          "開けてほしい派",
+          "後で開けてほしい派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "エレベーター「閉」ボタン、すぐ押す派？",
+        "options": [
+          "すぐ押す派",
+          "待つ派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ファミレスのドリンクバー、何杯飲む？",
+        "options": [
+          "1〜2杯で十分",
+          "元取るまで飲む"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "鍋の最後のシメ、ご飯派？うどん派？",
+        "options": [
+          "ご飯（雑炊）派",
+          "うどん派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "宝くじが当たったら、まず誰に言う？",
+        "options": [
+          "家族に言う",
+          "誰にも言わない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      }
+    ]
+  },
+  {
+    "scene": "みんなで",
+    "title": "😈 あなたは少数派？多数派？ — 本音バトル",
+    "mode": "opinion",
+    "loseRule": "majority",
+    "description": "多数派が負けるモード！みんなと違う答えを選んだ人が勝ち。個性の戦い！",
+    "questions": [
+      {
+        "text": "サンタクロース、何歳まで信じてた？",
+        "options": [
+          "5歳以下",
+          "6〜8歳",
+          "9〜11歳",
+          "中学生以降も"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "お風呂、毎日入る派？",
+        "options": [
+          "毎日入る",
+          "2日に1回くらい",
+          "シャワーで済ます"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "幽霊や心霊現象、信じる？",
+        "options": [
+          "信じる",
+          "少し信じる",
+          "信じない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "友達への連絡、どのくらい放置できる？",
+        "options": [
+          "1日以上は無理",
+          "1週間くらいは余裕",
+          "1ヶ月以上放置もある"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "人生でもう一度やり直せるなら？",
+        "options": [
+          "学生時代に戻る",
+          "就職前に戻る",
+          "このままでいい"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "お葬式より結婚式に行きたい派？",
+        "options": [
+          "結婚式が好き",
+          "どちらも同じ",
+          "葬式の方が気楽"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "「行けたら行く」って言われたら？",
+        "options": [
+          "来る気がないと思う",
+          "本当に迷ってると思う",
+          "来ると思う"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
       }
     ]
   }
