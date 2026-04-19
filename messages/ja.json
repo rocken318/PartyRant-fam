@@ -138,7 +138,7 @@
     "randomStarting": "ゲーム作成中...",
     "previewButton": "中身を見る",
     "previewClose": "閉じる",
-    "previewQuestionCount": "全{{count}}問"
+    "previewQuestionCount": "全{count}問"
   },
   "hostGame": {
     "startGame": "🚀 ゲーム開始（{count} 人）",
