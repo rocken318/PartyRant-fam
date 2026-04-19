@@ -253,7 +253,7 @@ export default function PresetsPage() {
                         <button
                           type="button"
                           onClick={() => setPreviewPreset(preset)}
-                          disabled={isStarting || starting !== null}
+                          disabled={isStarting}
                           className="flex-shrink-0 h-12 px-4 bg-white text-pr-dark font-bold text-sm rounded-[6px] border-[3px] border-pr-dark shadow-[3px_3px_0_#111] active:shadow-[1px_1px_0_#111] active:translate-x-[1px] active:translate-y-[1px] transition-[transform,box-shadow] duration-75 disabled:opacity-50 touch-manipulation"
                           style={{ fontFamily: 'var(--font-dm)' }}>
                           {t('previewButton')}
@@ -262,7 +262,7 @@ export default function PresetsPage() {
                           type="button"
                           onClick={() => handleStart(preset.id)}
                           disabled={isStarting || starting !== null}
-                          className="flex-1 h-12 bg-pr-pink text-white font-bold rounded-[6px] border-[3px] border-pr-dark shadow-[3px_3px_0_#111] active:shadow-[1px_1px_0_#111] active:translate-x-[1px] active:translate-y-[1px] transition-[transform,box-shadow] duration-75 disabled:opacity-50 touch-manipulation"
+                          className="flex-1 min-w-[80px] h-12 bg-pr-pink text-white font-bold rounded-[6px] border-[3px] border-pr-dark shadow-[3px_3px_0_#111] active:shadow-[1px_1px_0_#111] active:translate-x-[1px] active:translate-y-[1px] transition-[transform,box-shadow] duration-75 disabled:opacity-50 touch-manipulation"
                           style={{ fontFamily: 'var(--font-dm)' }}>
                           {isStarting ? t('starting') : t('startButton')}
                         </button>
