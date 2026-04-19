@@ -7,61 +7,91 @@
     "questions": [
       {
         "text": "犬派？猫派？",
-        "options": ["犬派", "猫派"],
+        "options": [
+          "犬派",
+          "猫派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "朝型？夜型？",
-        "options": ["朝型", "夜型"],
+        "options": [
+          "朝型",
+          "夜型"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "インドア派？アウトドア派？",
-        "options": ["インドア派", "アウトドア派"],
+        "options": [
+          "インドア派",
+          "アウトドア派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "海派？山派？",
-        "options": ["海派", "山派"],
+        "options": [
+          "海派",
+          "山派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "お風呂は長風呂派？サッと派？",
-        "options": ["長風呂派", "サッと派"],
+        "options": [
+          "長風呂派",
+          "サッと派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "スマホはiPhone派？Android派？",
-        "options": ["iPhone派", "Android派"],
+        "options": [
+          "iPhone派",
+          "Android派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "映画館派？家で観る派？",
-        "options": ["映画館派", "家で観る派"],
+        "options": [
+          "映画館派",
+          "家で観る派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "旅行は計画派？ノープラン派？",
-        "options": ["計画派", "ノープラン派"],
+        "options": [
+          "計画派",
+          "ノープラン派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "連絡は電話派？メッセージ派？",
-        "options": ["電話派", "メッセージ派"],
+        "options": [
+          "電話派",
+          "メッセージ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "告白するなら自分から派？されたい派？",
-        "options": ["自分から派", "されたい派"],
+        "options": [
+          "自分から派",
+          "されたい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       }
@@ -75,61 +105,93 @@
     "questions": [
       {
         "text": "白米派？パン派？",
-        "options": ["白米派", "パン派"],
+        "options": [
+          "白米派",
+          "パン派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "きのこの山派？たけのこの里派？",
-        "options": ["きのこの山派", "たけのこの里派"],
+        "options": [
+          "きのこの山派",
+          "たけのこの里派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "目玉焼きには醤油派？ソース派？",
-        "options": ["醤油派", "ソース派"],
+        "options": [
+          "醤油派",
+          "ソース派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "カレーは甘口派？中辛以上派？",
-        "options": ["甘口派", "中辛以上派"],
+        "options": [
+          "甘口派",
+          "中辛以上派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "ラーメンはあっさり派？こってり派？",
-        "options": ["あっさり派", "こってり派"],
+        "options": [
+          "あっさり派",
+          "こってり派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "唐揚げにレモン、かける派？かけない派？",
-        "options": ["かける派", "かけない派"],
+        "options": [
+          "かける派",
+          "かけない派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "ポテトは細い派？太い派？",
-        "options": ["細い派", "太い派"],
+        "options": [
+          "細い派",
+          "太い派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "寿司で最初に食べるなら？",
-        "options": ["好きなネタから", "あっさり系から", "定番から"],
+        "options": [
+          "好きなネタから",
+          "あっさり系から",
+          "定番から"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "プリンはかため派？とろとろ派？",
-        "options": ["かため派", "とろとろ派"],
+        "options": [
+          "かため派",
+          "とろとろ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "飲み会の締めはラーメン派？デザート派？帰宅派？",
-        "options": ["ラーメン派", "デザート派", "そのまま帰宅派"],
+        "options": [
+          "ラーメン派",
+          "デザート派",
+          "そのまま帰宅派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 15
       }
@@ -143,61 +205,92 @@
     "questions": [
       {
         "text": "休日は家でゴロゴロ派？外出したい派？",
-        "options": ["家でゴロゴロ派", "外出したい派"],
+        "options": [
+          "家でゴロゴロ派",
+          "外出したい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "旅行するなら国内派？海外派？",
-        "options": ["国内派", "海外派"],
+        "options": [
+          "国内派",
+          "海外派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "遊園地なら絶叫系乗る派？見てる派？",
-        "options": ["乗る派", "見てる派"],
+        "options": [
+          "乗る派",
+          "見てる派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "服を買うなら店で見る派？ネット派？",
-        "options": ["店で見る派", "ネット派"],
+        "options": [
+          "店で見る派",
+          "ネット派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "寝る時は真っ暗派？少し明かり欲しい派？",
-        "options": ["真っ暗派", "少し明かり欲しい派"],
+        "options": [
+          "真っ暗派",
+          "少し明かり欲しい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "部屋はきれい好き派？多少散らかってても平気派？",
-        "options": ["きれい好き派", "多少散らかってても平気派"],
+        "options": [
+          "きれい好き派",
+          "多少散らかってても平気派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "財布は現金派？キャッシュレス派？",
-        "options": ["現金派", "キャッシュレス派"],
+        "options": [
+          "現金派",
+          "キャッシュレス派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "買い物は即決派？めっちゃ悩む派？",
-        "options": ["即決派", "めっちゃ悩む派"],
+        "options": [
+          "即決派",
+          "めっちゃ悩む派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "朝ごはんは食べる派？食べない派？",
-        "options": ["食べる派", "食べない派"],
+        "options": [
+          "食べる派",
+          "食べない派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "休みの日の理想は？",
-        "options": ["朝から充実", "昼からのんびり", "予定ゼロが最高"],
+        "options": [
+          "朝から充実",
+          "昼からのんびり",
+          "予定ゼロが最高"
+        ],
         "correctIndex": null,
         "timeLimitSec": 15
       }
@@ -211,61 +304,93 @@
     "questions": [
       {
         "text": "恋人とは毎日連絡したい派？必要な時だけ派？",
-        "options": ["毎日連絡したい派", "必要な時だけ派"],
+        "options": [
+          "毎日連絡したい派",
+          "必要な時だけ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "デートは割り勘派？多めに出したい派？",
-        "options": ["割り勘派", "多めに出したい派"],
+        "options": [
+          "割り勘派",
+          "多めに出したい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "恋人にするなら顔重視？性格重視？",
-        "options": ["顔重視", "性格重視"],
+        "options": [
+          "顔重視",
+          "性格重視"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "好きになりやすいのは、一目惚れ派？じわじわ派？",
-        "options": ["一目惚れ派", "じわじわ派"],
+        "options": [
+          "一目惚れ派",
+          "じわじわ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "友達は広く浅く派？狭く深く派？",
-        "options": ["広く浅く派", "狭く深く派"],
+        "options": [
+          "広く浅く派",
+          "狭く深く派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "ケンカしたらすぐ話したい派？少し時間置きたい派？",
-        "options": ["すぐ話したい派", "少し時間置きたい派"],
+        "options": [
+          "すぐ話したい派",
+          "少し時間置きたい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "サプライズされたい派？事前に知りたい派？",
-        "options": ["されたい派", "事前に知りたい派"],
+        "options": [
+          "されたい派",
+          "事前に知りたい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "結婚式するなら盛大に派？身内だけ派？",
-        "options": ["盛大に派", "身内だけ派", "しなくてもいい派"],
+        "options": [
+          "盛大に派",
+          "身内だけ派",
+          "しなくてもいい派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 15
       },
       {
         "text": "恋人に嫉妬するのはアリ派？ナシ派？",
-        "options": ["アリ派", "ナシ派"],
+        "options": [
+          "アリ派",
+          "ナシ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "告白の理想は？",
-        "options": ["直接言ってほしい", "LINEでもOK", "自然に付き合いたい"],
+        "options": [
+          "直接言ってほしい",
+          "LINEでもOK",
+          "自然に付き合いたい"
+        ],
         "correctIndex": null,
         "timeLimitSec": 15
       }
@@ -279,61 +404,94 @@
     "questions": [
       {
         "text": "締切はコツコツ派？ギリギリ派？",
-        "options": ["コツコツ派", "ギリギリ派"],
+        "options": [
+          "コツコツ派",
+          "ギリギリ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "寝坊した時、まずすることは？",
-        "options": ["急いで準備", "一旦現実逃避", "言い訳を考える"],
+        "options": [
+          "急いで準備",
+          "一旦現実逃避",
+          "言い訳を考える"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "会議や授業、前の席派？後ろの席派？",
-        "options": ["前の席派", "後ろの席派"],
+        "options": [
+          "前の席派",
+          "後ろの席派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "メモは手書き派？スマホ・PC派？",
-        "options": ["手書き派", "スマホ・PC派"],
+        "options": [
+          "手書き派",
+          "スマホ・PC派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "昼休みは一人でゆっくり派？みんなで過ごす派？",
-        "options": ["一人でゆっくり派", "みんなで過ごす派"],
+        "options": [
+          "一人でゆっくり派",
+          "みんなで過ごす派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "課題や仕事は静かな場所派？音楽あり派？",
-        "options": ["静かな場所派", "音楽あり派"],
+        "options": [
+          "静かな場所派",
+          "音楽あり派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "プレッシャーに強い方？本番に弱い方？",
-        "options": ["強い方", "本番に弱い方"],
+        "options": [
+          "強い方",
+          "本番に弱い方"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "人前で話すの得意？苦手？",
-        "options": ["得意", "苦手"],
+        "options": [
+          "得意",
+          "苦手"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "朝の通勤通学、音楽聴く派？何も聴かない派？",
-        "options": ["音楽聴く派", "何も聴かない派"],
+        "options": [
+          "音楽聴く派",
+          "何も聴かない派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "仕事や勉強で大事なのは？",
-        "options": ["才能", "努力", "継続", "要領の良さ"],
+        "options": [
+          "才能",
+          "努力",
+          "継続",
+          "要領の良さ"
+        ],
         "correctIndex": null,
         "timeLimitSec": 15
       }
@@ -347,61 +505,594 @@
     "questions": [
       {
         "text": "音楽は歌詞重視派？メロディ重視派？",
-        "options": ["歌詞重視派", "メロディ重視派"],
+        "options": [
+          "歌詞重視派",
+          "メロディ重視派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "映画なら泣ける系派？笑える系派？",
-        "options": ["泣ける系派", "笑える系派"],
+        "options": [
+          "泣ける系派",
+          "笑える系派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "ホラー映画、観られる派？無理派？",
-        "options": ["観られる派", "無理派"],
+        "options": [
+          "観られる派",
+          "無理派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "カラオケで歌うの好き派？聴くの好き派？",
-        "options": ["歌うの好き派", "聴くの好き派"],
+        "options": [
+          "歌うの好き派",
+          "聴くの好き派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "SNSは投稿する派？見る専派？",
-        "options": ["投稿する派", "見る専派"],
+        "options": [
+          "投稿する派",
+          "見る専派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "ゲームするなら一人でじっくり派？みんなでワイワイ派？",
-        "options": ["一人でじっくり派", "みんなでワイワイ派"],
+        "options": [
+          "一人でじっくり派",
+          "みんなでワイワイ派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "漫画は紙派？電子派？",
-        "options": ["紙派", "電子派"],
+        "options": [
+          "紙派",
+          "電子派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "推し活するなら、現場派？在宅派？",
-        "options": ["現場派", "在宅派"],
+        "options": [
+          "現場派",
+          "在宅派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 12
       },
       {
         "text": "写真撮る時、自撮り派？他撮り派？",
-        "options": ["自撮り派", "他撮り派"],
+        "options": [
+          "自撮り派",
+          "他撮り派"
+        ],
         "correctIndex": null,
         "timeLimitSec": 10
       },
       {
         "text": "一日だけ有名人になれるなら？",
-        "options": ["俳優・女優", "アーティスト", "スポーツ選手", "インフルエンサー"],
+        "options": [
+          "俳優・女優",
+          "アーティスト",
+          "スポーツ選手",
+          "インフルエンサー"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "🎮 ゲーム・ネット文化の多数派戦",
+    "mode": "polling",
+    "description": "ゲーマーやネット民なら避けて通れない、こだわりが爆発する二択セット。",
+    "questions": [
+      {
+        "text": "RPGで名前を付けるなら？",
+        "options": [
+          "自分の本名（またはニックネーム）",
+          "デフォルト名・かっこいい名前"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "対戦ゲームで負けた時、どう思う？",
+        "options": [
+          "次は勝つ！（リベンジ燃える）",
+          "向いてないかも…（即やめる）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ゲームの難易度は？",
+        "options": [
+          "サクサク進める「イージー」",
+          "歯ごたえのある「ノーマル以上」"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "コントローラーの決定ボタンは？",
+        "options": [
+          "下（A/×）派",
+          "右（B/○）派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "攻略情報は？",
+        "options": [
+          "詰まるまで見ない",
+          "最初から効率よく見ちゃう"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "動画配信、見るなら？",
+        "options": [
+          "編集されたYouTube動画",
+          "臨場感のある生配信（Twitch等）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "PCのブラウザ、タブは？",
+        "options": [
+          "数個だけ。使い終わったら閉じる",
+          "数十個。開きっぱなしがデフォ"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "マウスの感度（DPI）は？",
+        "options": [
+          "ローセンシ（大きく動かす）",
+          "ハイセンシ（手首だけで動かす）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "課金についてどう思う？",
+        "options": [
+          "時短・応援だからアリ",
+          "無課金で頑張るのが美学"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "一度だけ異世界転生するなら？",
+        "options": [
+          "圧倒的パワーを持つ勇者",
+          "平和に暮らす村人A",
+          "知識で無双する商人"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "✈️ 旅行・アドベンチャーの価値観",
+    "mode": "polling",
+    "description": "旅先でのトラブルや楽しみ方。一緒に旅行に行ける相手かどうかがバレる？",
+    "questions": [
+      {
+        "text": "ホテルに着いたらまず何をする？",
+        "options": [
+          "ベッドにダイブ",
+          "荷物を全部整理する",
+          "部屋の写真を撮る"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "旅行の移動手段、理想は？",
+        "options": [
+          "自分で運転するレンタカー",
+          "のんびり電車・バス"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "知らない土地での食事は？",
+        "options": [
+          "行列のできる有名店",
+          "適当に見つけた路地裏の名店"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "旅先でトラブル発生！あなたの態度は？",
+        "options": [
+          "「これもネタ！」と笑う",
+          "ガチで落ち込む・不機嫌になる"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "お土産は？",
+        "options": [
+          "配る用に大量買い",
+          "自分に一点豪華主義",
+          "基本買わない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "飛行機で隣の人が肘置きを占領してたら？",
+        "options": [
+          "我慢する",
+          "さりげなく取り返す",
+          "CAさんに相談（または睨む）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "長期休暇、行くなら？",
+        "options": [
+          "超都会（NY、東京など）",
+          "大自然（スイス、北海道など）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "パッキングは？",
+        "options": [
+          "数日前から完璧にやる",
+          "出発当日の数時間前にやる"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "旅先で現地の言葉、使う？",
+        "options": [
+          "積極的に使ってみる",
+          "日本語か英語で押し通す"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "理想の旅の終わり方は？",
+        "options": [
+          "余韻に浸りながら早めに帰宅",
+          "最終便ギリギリまで遊び尽くす"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "🧘 健康・肉体派の多数派ジャッジ",
+    "mode": "polling",
+    "description": "筋トレ、ダイエット、睡眠。ストイック派とズボラ派の境界線。",
+    "questions": [
+      {
+        "text": "エスカレーターと階段、どっちを使う？",
+        "options": [
+          "迷わずエスカレーター",
+          "運動のために階段"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "体調が悪い時、どうする？",
+        "options": [
+          "すぐに病院・薬",
+          "寝て治す"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ジムに通うなら？",
+        "options": [
+          "黙々と一人で追い込む",
+          "友達やトレーナーと楽しく"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "サウナは？",
+        "options": [
+          "「整う」まで我慢する派",
+          "暑いのが無理で即出る派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "1日の睡眠時間は？",
+        "options": [
+          "6時間未満でも平気",
+          "7〜8時間は絶対寝たい"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "食事制限、するならどっち？",
+        "options": [
+          "糖質制限（米・パン抜き）",
+          "脂質制限（揚げ物抜き）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "鏡を見る回数は？",
+        "options": [
+          "気づけば見ている（ナルシスト気味）",
+          "必要最低限しか見ない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "朝起きて最初にすることは？",
+        "options": [
+          "コップ一杯の水",
+          "スマホチェック",
+          "二度寝"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "健康診断の結果は？",
+        "options": [
+          "隅々まで読み込む",
+          "判定だけ見て終わり"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "一生どちらかの体になれるなら？",
+        "options": [
+          "バキバキの筋肉美",
+          "モデルのような細身",
+          "ほどよく動ける標準体型"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "📱 デジタル・SNS生活の裏側",
+    "mode": "polling",
+    "description": "スマホなしでは生きられない現代人の、リアルな生態をチェック。",
+    "questions": [
+      {
+        "text": "LINEの通知バッジ（未読数）、気になる？",
+        "options": [
+          "1つでもあると消したい",
+          "数百件あっても放置"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "SNSの「裏垢」持ってる？",
+        "options": [
+          "持っている（または持ってた）",
+          "本垢ひとつで勝負"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "スマホの充電、何％で焦る？",
+        "options": [
+          "50%を切ったら",
+          "20%を切ったら",
+          "1%になるまで余裕"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "知らない番号からの電話、出る？",
+        "options": [
+          "とりあえず出る",
+          "絶対に出ない（後で番号調べる）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "フリック入力？トグル入力（ガラケー打ち）？",
+        "options": [
+          "フリック派",
+          "トグル・連打派"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "ネットで買い物する時、レビューは？",
+        "options": [
+          "星1の低評価をチェックする",
+          "全体の平均点だけ見る"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "スマホの画面、割れたまま使ったことある？",
+        "options": [
+          "ある（または今そう）",
+          "すぐに直す・ありえない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "サブスク、月額合計いくら払ってる？",
+        "options": [
+          "3000円未満",
+          "3000円〜1万円",
+          "把握してない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "SNSで「知り合い」を見つけたら？",
+        "options": [
+          "自分からフォローする",
+          "相手から来るまで待つ",
+          "見なかったことにする"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "パスワードの管理は？",
+        "options": [
+          "使い回し派",
+          "ツールや手帳でバラバラに管理"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      }
+    ]
+  },
+  {
+    "scene": "多数派クイズ",
+    "title": "🤐 禁断の本音！ブラック多数派戦",
+    "mode": "polling",
+    "description": "少しリスク高め。人間関係のドロドロした部分をあえて突っつくセット。",
+    "questions": [
+      {
+        "text": "ぶっちゃけ、他人の不幸は…？",
+        "options": [
+          "ちょっとだけ蜜の味",
+          "全く興味ない・同情する"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "親友が悪いことをしていたら？",
+        "options": [
+          "全力で止める",
+          "黙って見守る（または手伝う）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "SNSのキラキラ投稿を見てどう思う？",
+        "options": [
+          "「おー、すごいな」",
+          "「自慢うざいな」",
+          "何も感じない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "仕事でミスをなすりつけられそうになったら？",
+        "options": [
+          "徹底抗戦・言い返す",
+          "穏便に済ませるために被る"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "「一生バレない」なら浮気する？",
+        "options": [
+          "するかもしれない",
+          "絶対しない"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "他人の年収、正直気になる？",
+        "options": [
+          "めちゃくちゃ気になる",
+          "どうでもいい"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 10
+      },
+      {
+        "text": "奢ってもらった時、財布を出すフリ…",
+        "options": [
+          "必ずする",
+          "しない（感謝だけ伝える）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "嫌いな人がピンチ！助ける？",
+        "options": [
+          "人助けとして助ける",
+          "無視する・心の中で喜ぶ"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "本音と建前、どっちが得だと思う？",
+        "options": [
+          "建前（嘘も方便）",
+          "本音（正直者が勝つ）"
+        ],
+        "correctIndex": null,
+        "timeLimitSec": 12
+      },
+      {
+        "text": "もし悪魔が願いを叶えてくれるなら？",
+        "options": [
+          "自分の富",
+          "嫌いな奴の不幸",
+          "世界の平和"
+        ],
         "correctIndex": null,
         "timeLimitSec": 15
       }
