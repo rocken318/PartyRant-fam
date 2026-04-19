@@ -114,10 +114,14 @@
     "title": "プリセット",
     "subtitle": "ログイン不要・すぐ遊べる",
     "filterAll": "すべて",
+    "filterSceneLabel": "シーン",
+    "filterTypeLabel": "タイプ",
     "questionCount": "問",
+    "resultCount": "件",
     "startButton": "🚀 このゲームで遊ぶ",
     "starting": "準備中...",
-    "empty": "プリセットがまだありません"
+    "empty": "プリセットがまだありません",
+    "noResults": "条件に合うゲームがありません"
   },
   "hostGame": {
     "startGame": "🚀 ゲーム開始（{count} 人）",

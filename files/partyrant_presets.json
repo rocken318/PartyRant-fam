@@ -1,0 +1,1534 @@
+[
+  {
+    "scene": "結婚式",
+    "title": "新郎新婦クイズ！ふたりのこと、どれだけ知ってる？",
+    "mode": "trivia",
+    "description": "披露宴・二次会の定番！新郎新婦のエピソードを出題。※correctIndexはホストが事前にふたりに聞いて設定してください。",
+    "questions": [
+      {
+        "text": "新郎が新婦に初めて言った言葉は？",
+        "options": ["『はじめまして』", "『かわいいですね』", "『連絡先教えて』", "『一緒に帰りませんか？』"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ふたりが初めてデートした場所は？",
+        "options": ["カフェ", "映画館", "水族館", "居酒屋"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "プロポーズの言葉は次のうちどれ？",
+        "options": ["『結婚してください』", "『一生一緒にいてください』", "『俺のこと幸せにして』", "『…（指輪を黙って出した）』"],
+        "correctIndex": 1,
+        "timeLimitSec": 25
+      },
+      {
+        "text": "新婦が新郎に最初に惚れたポイントは？",
+        "options": ["顔", "優しさ", "お金", "笑い方"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "新郎の一番直してほしい癖は？",
+        "options": ["すぐ寝る", "話を聞かない", "靴下脱ぎっぱなし", "スマホばっかり"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ふたりの初キスはどこで？",
+        "options": ["家の前", "車の中", "公園", "ホテル前"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "喧嘩した時、先に謝るのはどっち？",
+        "options": ["新郎", "新婦", "両方同時", "謝らない"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "結婚式",
+    "title": "新郎新婦どっち派？ゲストの本音投票",
+    "mode": "polling",
+    "description": "ゲスト全員で新郎新婦を比較！正解なしの無責任投票で爆笑必至。",
+    "questions": [
+      {
+        "text": "浮気しそうなのはどっち？",
+        "options": ["新郎", "新婦", "絶対しない", "両方あやしい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "家庭で尻に敷かれそうなのは？",
+        "options": ["新郎", "新婦", "対等", "わからない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "10年後、お金を握っているのは？",
+        "options": ["新郎", "新婦", "折半", "子ども"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "先に老けるのはどっち？",
+        "options": ["新郎", "新婦", "同時", "ふたりとも若いまま"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "子どもは何人欲しそう？",
+        "options": ["1人", "2人", "3人以上", "いらない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "新婚旅行で喧嘩しそう？",
+        "options": ["絶対する", "たぶんする", "しない", "もうしてる"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "結婚式",
+    "title": "結婚にまつわる雑学クイズ",
+    "mode": "trivia",
+    "description": "披露宴のちょっとした時間に使える、結婚にまつわる豆知識クイズ。",
+    "questions": [
+      {
+        "text": "結婚25周年は何婚式？",
+        "options": ["金婚式", "銀婚式", "真珠婚式", "ダイヤモンド婚式"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "結婚指輪を左手の薬指にはめる理由は？",
+        "options": ["一番細いから", "心臓と繋がっているとされるから", "目立つから", "特に理由はない"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本で一番結婚式が多い月は？",
+        "options": ["6月", "11月", "3月", "10月"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『ジューンブライド』の由来となった神様は？",
+        "options": ["ビーナス", "ユノ", "アテナ", "ヘラクレス"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ウェディングケーキに入刀する意味は？",
+        "options": ["初めての共同作業", "厄払い", "豊作祈願", "お腹を満たす"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "ブーケトスの由来は？",
+        "options": ["花で厄を払う", "幸せのお裾分け", "花嫁に触れた幸運を配る", "偶然始まった"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "結婚式",
+    "title": "新郎の黒歴史クイズ（新婦監修）",
+    "mode": "trivia",
+    "description": "新婦から聞き出した新郎のヤバエピソードを出題。※答えは事前に新婦と打ち合わせ。",
+    "questions": [
+      {
+        "text": "新郎が昔ハマっていた痛い趣味は？",
+        "options": ["バンド活動", "アイドル追っかけ", "格闘ゲーム", "ナンパ"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "新郎の歴代彼女の数は？",
+        "options": ["0〜1人", "2〜3人", "4〜5人", "6人以上"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "新郎が酔うとやる変な癖は？",
+        "options": ["脱ぐ", "泣く", "告白する", "寝る"],
+        "correctIndex": 3,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "新郎が新婦にバレてない秘密は？",
+        "options": ["借金がある", "元カノと連絡してる", "ゲームに課金してる", "何もない（と本人は言っている）"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "新郎の学生時代のあだ名は？",
+        "options": ["◯◯くん（普通）", "デブ系", "モテ系", "変人系"],
+        "correctIndex": 3,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "結婚式",
+    "title": "ゲスト参加型・披露宴あるある",
+    "mode": "polling",
+    "description": "ゲストのリアルな声を可視化。二次会のアイスブレイクにピッタリ。",
+    "questions": [
+      {
+        "text": "披露宴で一番楽しみなのは？",
+        "options": ["料理", "余興", "新婦のドレス", "帰りの引き出物"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今日の感動ポイントは？",
+        "options": ["花嫁の手紙", "父親の涙", "新郎のスピーチ", "ケーキ入刀"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "自分が結婚するとしたら？",
+        "options": ["派手に挙げたい", "家族だけで", "しなくていい", "もうした"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "ご祝儀、正直いくら包んだ？",
+        "options": ["3万円", "5万円", "10万円以上", "秘密"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今日の新郎新婦に一言！",
+        "options": ["末永くお幸せに", "うらやましい", "早く子ども見たい", "俺も結婚したい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "合コン・街コン",
+    "title": "恋愛価値観バトル",
+    "mode": "polling",
+    "description": "正解なし！全員の本音が見えるアンケートで会話が一気に弾む。",
+    "questions": [
+      {
+        "text": "付き合う前のデート、お会計は？",
+        "options": ["完全割り勘", "多めに出す", "全額おごる", "その都度話し合う"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "告白するならどっち？",
+        "options": ["自分から", "相手から言わせる", "なんとなく付き合う", "告白しない派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "第一印象で重視するのは？",
+        "options": ["顔", "声", "服装", "話し方"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "デートの連絡、どのくらいの頻度？",
+        "options": ["毎日したい", "2〜3日に1回", "週1でOK", "必要な時だけ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "恋人に求めるのは？",
+        "options": ["癒し", "刺激", "安定感", "お金"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "別れの原因で一番キツいのは？",
+        "options": ["浮気", "冷めた", "価値観の違い", "遠距離"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "合コン・街コン",
+    "title": "この中で一番◯◯なのは誰だ？",
+    "mode": "polling",
+    "description": "参加者の中で誰が一番◯◯かを匿名投票。盛り上がり確定。",
+    "questions": [
+      {
+        "text": "この中で一番モテそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "家に連れて帰りたいのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "結婚したらいい夫・いい妻になりそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "意外と遊んでそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "10年後、一番出世してそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "実は天然そうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "合コン・街コン",
+    "title": "恋愛あるあるクイズ",
+    "mode": "trivia",
+    "description": "恋愛の心理学・雑学で会話のタネを提供。賢さチラ見せにも。",
+    "questions": [
+      {
+        "text": "人が恋に落ちるのにかかる時間は？",
+        "options": ["0.2秒", "3秒", "30秒", "3分"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『吊り橋効果』ってどんな効果？",
+        "options": ["高所で怖くなる", "ドキドキを恋と勘違いする", "橋の上で告白成功率UP", "景色で感動する"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "男女が友達でいられる期間の平均は？",
+        "options": ["約1年", "約3年", "約5年", "永遠"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "女性が『かわいい』と言う時、本当の意味は？",
+        "options": ["本当にかわいい", "どうでもいい", "場面による", "全部正解"],
+        "correctIndex": 3,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "初デートの成功率が上がる色は？",
+        "options": ["黒", "赤", "白", "青"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『ザイオンス効果』とは？",
+        "options": ["会うほど好きになる", "距離を置くと恋しくなる", "恋は盲目になる", "別れたら忘れる"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "合コン・街コン",
+    "title": "究極の二択！あなたはどっち？",
+    "mode": "polling",
+    "description": "シンプルな2択で価値観丸見え。テンポ良く盛り上がる。",
+    "questions": [
+      {
+        "text": "付き合うならどっち？",
+        "options": ["顔はタイプ・性格普通", "顔は普通・性格最高"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "結婚するならどっち？",
+        "options": ["年収1000万・週5帰宅遅い", "年収400万・毎日一緒"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "浮気されるならどっち？",
+        "options": ["体だけ", "心だけ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "デートで行くなら？",
+        "options": ["高級レストラン", "ラーメン屋からの居酒屋"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "プロポーズされるなら？",
+        "options": ["夜景の見える場所でロマンチックに", "家で普段着のまま自然に"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "初デートの服装は？",
+        "options": ["ちょっと頑張った服", "いつも通りのカジュアル"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "合コン・街コン",
+    "title": "デート代クイズ〜日本の恋愛事情〜",
+    "mode": "trivia",
+    "description": "恋愛にまつわるお金・統計ネタ。会話のフックに最適。",
+    "questions": [
+      {
+        "text": "日本人の平均初デート代はいくら？",
+        "options": ["約3,000円", "約6,000円", "約10,000円", "約15,000円"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本人の初婚年齢（男性）の平均は？",
+        "options": ["約28歳", "約31歳", "約34歳", "約37歳"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "結婚指輪の平均購入金額は？",
+        "options": ["約10万円", "約25万円", "約50万円", "約100万円"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "恋人にバレンタインで渡される平均額は？",
+        "options": ["約2,000円", "約5,000円", "約8,000円", "約12,000円"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "カップル成立までの平均デート回数は？",
+        "options": ["1〜2回", "3〜4回", "5〜6回", "7回以上"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "キャバクラ・ホスト",
+    "title": "お客様のタイプ診断",
+    "mode": "polling",
+    "description": "お客様の好みをさりげなくリサーチ。接客のヒントにもなる遊び。",
+    "questions": [
+      {
+        "text": "好みの女性（男性）のタイプは？",
+        "options": ["清楚系", "ギャル系", "お姉さん系", "妹系"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "お酒は何派？",
+        "options": ["シャンパン", "ウイスキー", "焼酎", "カクテル"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "デートに誘うなら？",
+        "options": ["高級ディナー", "ドライブ", "お家デート", "旅行"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "言われて一番キュンとするセリフは？",
+        "options": ["『会いたかった』", "『離さないで』", "『好き』", "『帰らないで』"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "口説かれるならどこで？",
+        "options": ["夜景バー", "海辺", "車の中", "店内"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "ギャップに弱いのは？",
+        "options": ["クール→甘え", "元気→寂しがり", "大人→子供っぽい", "全部好き"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "キャバクラ・ホスト",
+    "title": "お酒の豆知識クイズ",
+    "mode": "trivia",
+    "description": "シャンパンや高級酒の雑学で『できるキャスト』演出。お客様も感心。",
+    "questions": [
+      {
+        "text": "『ドン・ペリニヨン』の名前の由来は？",
+        "options": ["創業者の名前", "修道士の名前", "地名", "王様の名前"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "シャンパンの泡は1本で何粒入っている？",
+        "options": ["約100万粒", "約1000万粒", "約1億粒", "約10億粒"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本で一番高いウイスキーは？",
+        "options": ["山崎55年", "響30年", "余市20年", "竹鶴35年"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ワインの『タンニン』は何に含まれる成分？",
+        "options": ["果肉", "皮・種", "樽", "水"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "カクテル『モスコミュール』の名前の意味は？",
+        "options": ["モスクワのラバ", "モスクワの風", "モスクワの女", "モスクワの夢"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "テキーラは何から作られる？",
+        "options": ["サボテン", "リュウゼツラン", "サトウキビ", "とうもろこし"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "キャバクラ・ホスト",
+    "title": "ちょっと危険な恋愛アンケート",
+    "mode": "polling",
+    "description": "お客様のホンネを引き出すちょっと色っぽい質問集。場を温める鉄板。",
+    "questions": [
+      {
+        "text": "今日の私、正直どう？",
+        "options": ["可愛い（かっこいい）", "綺麗", "セクシー", "全部"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "もし私と付き合ったら？",
+        "options": ["毎日会いたい", "束縛する", "甘やかす", "振り回される"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "恋人にするなら？",
+        "options": ["尽くすタイプ", "尽くされるタイプ", "対等なタイプ", "ドキドキ系"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "酔ったらどうなる？",
+        "options": ["陽気になる", "甘えん坊になる", "エロくなる", "寝る"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今夜の理想の終わり方は？",
+        "options": ["もう1軒行く", "アフターに行く", "このままずっと飲む", "ヒミツ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "キャバクラ・ホスト",
+    "title": "キャスト指名ゲーム",
+    "mode": "polling",
+    "description": "今日の卓でお客様の『推し』を可視化！席替え・ドリンク会計のきっかけに。",
+    "questions": [
+      {
+        "text": "今日、一番オーラがあるのは？",
+        "options": ["キャストA", "キャストB", "キャストC", "キャストD"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "連れて帰りたいのは？",
+        "options": ["キャストA", "キャストB", "キャストC", "キャストD"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "結婚するならこの人！",
+        "options": ["キャストA", "キャストB", "キャストC", "キャストD"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "実は一番尽くしてくれそうなのは？",
+        "options": ["キャストA", "キャストB", "キャストC", "キャストD"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今日の主役（盛り上げ役）は？",
+        "options": ["キャストA", "キャストB", "キャストC", "お客様本人"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "キャバクラ・ホスト",
+    "title": "夜の街・業界雑学クイズ",
+    "mode": "trivia",
+    "description": "夜の街のちょっとした豆知識。トークのネタ切れ対策に。",
+    "questions": [
+      {
+        "text": "日本最大のキャバクラ街は？",
+        "options": ["歌舞伎町", "ミナミ", "中洲", "すすきの"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『シャンパンタワー』1段に必要なグラス数は？",
+        "options": ["1杯", "4杯", "9杯", "16杯"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ホストの『売上日本一』の月間記録はどれくらい？",
+        "options": ["約5,000万円", "約1億円", "約3億円", "約6億円"],
+        "correctIndex": 3,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "キャバクラの指名料の相場は？",
+        "options": ["500円〜", "1,000円〜", "3,000円〜", "5,000円〜"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "高級クラブでのボトル『入れ』の最高峰は？",
+        "options": ["ドンペリ", "アルマンド", "クリスタル", "サロン"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "うちの会社クイズ",
+    "mode": "trivia",
+    "description": "自社のトリビアを出題！社長・部長・社内ルールなど。※答えはホストが会社情報に合わせて設定。",
+    "questions": [
+      {
+        "text": "我が社の創業年は？",
+        "options": ["1980年代", "1990年代", "2000年代", "2010年代"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "社長の好きな食べ物は？",
+        "options": ["ラーメン", "寿司", "焼肉", "カレー"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "我が社の社員数は？",
+        "options": ["50人未満", "50〜200人", "200〜500人", "500人以上"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "社長が口癖のように言うセリフは？",
+        "options": ["『頑張ろう』", "『それで？』", "『伝われ』", "『昭和は…』"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "我が社で一番多い名字は？",
+        "options": ["佐藤", "鈴木", "田中", "高橋"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "入社式で社長が必ず言う言葉は？",
+        "options": ["『夢を持て』", "『挑戦しろ』", "『仲間を大切に』", "『お疲れさま』"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "社内の◯◯は誰だ？",
+    "mode": "polling",
+    "description": "社内の人気・あるある投票。翌日も話題になる鉄板ゲーム。",
+    "questions": [
+      {
+        "text": "うちの会社で一番デキる人は？",
+        "options": ["Aさん", "Bさん", "Cさん", "自分"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "定時で一番早く帰るのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "社長"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "社内で一番の癒し枠は？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "飲み会で一番記憶を失うのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "部長"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "密かにモテてそうな人は？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "社長になりそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "今の社長のまま"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "ビジネス一般常識クイズ",
+    "mode": "trivia",
+    "description": "新入社員の歓迎会にも使える、ビジネス常識の雑学。",
+    "questions": [
+      {
+        "text": "『稟議書』の読み方は？",
+        "options": ["ひんぎしょ", "りんぎしょ", "ぼんぎしょ", "りんりしょ"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『PDCA』のCは何の略？",
+        "options": ["Create", "Check", "Change", "Control"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "名刺交換で下に出すのは？",
+        "options": ["目上の人", "目下の人", "どちらも同時", "女性"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "日本で一番古い株式会社は？",
+        "options": ["三菱", "三井", "第一国立銀行", "金剛組"],
+        "correctIndex": 3,
+        "timeLimitSec": 25
+      },
+      {
+        "text": "『就業規則』は従業員何人以上で必須？",
+        "options": ["5人", "10人", "30人", "50人"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "有給休暇の付与は入社何ヶ月後？",
+        "options": ["即日", "3ヶ月後", "6ヶ月後", "1年後"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "忘年会・新年会あるある投票",
+    "mode": "polling",
+    "description": "会社の飲み会あるあるをみんなで投票。共感で盛り上がる。",
+    "questions": [
+      {
+        "text": "会社の飲み会、正直どう？",
+        "options": ["めっちゃ好き", "まあ楽しい", "面倒くさい", "絶対行きたくない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "飲み会で一番いらないのは？",
+        "options": ["部長の武勇伝", "上司の恋愛話", "一気コール", "締めのラーメン"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "二次会、行く？",
+        "options": ["絶対行く", "流れで行く", "行かない", "帰って寝る"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "上司からの『今日は無礼講で！』を信じる？",
+        "options": ["信じる", "半分信じる", "絶対罠", "そもそも聞いてない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "会社の飲み会、理想の頻度は？",
+        "options": ["月1以上", "2〜3ヶ月に1回", "半年に1回", "なくていい"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "数字で見るニッポンの働き方クイズ",
+    "mode": "trivia",
+    "description": "働き方・給料のリアルな数字クイズ。自分たちの働き方を見直すきっかけにも。",
+    "questions": [
+      {
+        "text": "日本人の平均年収は？",
+        "options": ["約350万円", "約460万円", "約580万円", "約700万円"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "日本の有給取得率は世界何位くらい？",
+        "options": ["トップ10", "中位", "最下位クラス", "1位"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "サラリーマンの平均お小遣いは？",
+        "options": ["約2万円", "約4万円", "約6万円", "約8万円"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "日本人が年間で働く平均時間は？",
+        "options": ["約1,400時間", "約1,600時間", "約1,800時間", "約2,000時間"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本の上場企業の社長の平均年齢は？",
+        "options": ["約50歳", "約55歳", "約60歳", "約65歳"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "会社の飲み会",
+    "title": "部長の秘密クイズ",
+    "mode": "trivia",
+    "description": "飲み会のネタに、部長本人に事前聞き取りして使う即席ゲーム。※答えは部長に確認。",
+    "questions": [
+      {
+        "text": "部長の学生時代の部活は？",
+        "options": ["野球", "サッカー", "バスケ", "文化部"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "部長が若い頃ハマっていたのは？",
+        "options": ["バンド", "麻雀", "ナンパ", "勉強"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "部長の初デート場所は？",
+        "options": ["映画館", "遊園地", "海", "居酒屋"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "部長の座右の銘は？",
+        "options": ["継続は力なり", "為せば成る", "明日は明日の風が吹く", "酒は百薬の長"],
+        "correctIndex": 3,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "部長の奥さんとの出会いは？",
+        "options": ["職場", "合コン", "学生時代", "お見合い"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "ホームパーティー",
+    "title": "友達の秘密暴露クイズ",
+    "mode": "trivia",
+    "description": "ホストが参加者のエピソードを事前聞き取りして出題。誰のことか当てる形式。",
+    "questions": [
+      {
+        "text": "この中で『キス経験ゼロ』で嘘ついてたことがあるのは誰？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "中学時代のあだ名が『おたまじゃくし』だったのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "初めて買ったCDがアニソンなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "過去に警察のお世話になったことがあるのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 3,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "推しに本気で貢いで10万以上使ったのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "ホームパーティー",
+    "title": "友達ランキング！誰が一番◯◯？",
+    "mode": "polling",
+    "description": "身内ならではの率直投票。一番出世しそうなのは？一番ヤバいのは？",
+    "questions": [
+      {
+        "text": "この中で一番モテるのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "10年後お金持ちになってそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "結婚が一番遅そうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "無人島に一緒に行きたいのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "絶対にお金を貸したくないのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "親に紹介して一番喜ばれそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "ホームパーティー",
+    "title": "雑学王決定戦！へぇ〜なトリビア",
+    "mode": "trivia",
+    "description": "ちょっと賢くなる雑学クイズ。意外とみんな答えられない。",
+    "questions": [
+      {
+        "text": "バナナは植物学上、何に分類される？",
+        "options": ["果物", "野菜", "草", "木"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "コアラの指紋は誰とそっくり？",
+        "options": ["ゴリラ", "犬", "人間", "ネズミ"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "カフェオレとカフェラテの違いは？",
+        "options": ["豆の種類", "ミルクの種類", "コーヒーの淹れ方", "産地"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "人が1日で瞬きする平均回数は？",
+        "options": ["約500回", "約1,500回", "約15,000回", "約50,000回"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "『世界一長い国名』を持つ国はどこ？",
+        "options": ["イギリス", "リビア", "タイ", "スリランカ"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ナポリタンの発祥は？",
+        "options": ["イタリア・ナポリ", "日本・横浜", "アメリカ", "フランス"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "ホームパーティー",
+    "title": "究極の選択！あなたならどっち？",
+    "mode": "polling",
+    "description": "選びたくない二択で議論勃発。深夜のテンションに最適。",
+    "questions": [
+      {
+        "text": "選ぶならどっち？",
+        "options": ["100億円もらえるけど友達ゼロ", "友達100人いるけど貧乏"],
+        "correctIndex": null,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "もし体が変わるなら？",
+        "options": ["顔だけ超美人/イケメン", "スタイルだけ完璧"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "タイムマシンがあったら？",
+        "options": ["10年前に戻る", "10年後に行く"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "能力を1つもらえるなら？",
+        "options": ["空を飛べる", "透明になれる", "心が読める", "瞬間移動"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "一生続けるならどっち？",
+        "options": ["ずっと夏", "ずっと冬"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "1年間できないならどっち？",
+        "options": ["スマホ禁止", "お風呂禁止"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "ホームパーティー",
+    "title": "推し活&サブカル診断",
+    "mode": "polling",
+    "description": "みんなのオタク度・推し活を可視化。友達の意外な一面が見える。",
+    "questions": [
+      {
+        "text": "推し活に年間いくら使う？",
+        "options": ["0円", "1〜5万円", "5〜20万円", "20万円以上"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "推しジャンルは？",
+        "options": ["アイドル", "アニメ・漫画", "俳優・2.5次元", "スポーツ選手"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "好きなサブスクは？",
+        "options": ["Netflix", "YouTube Premium", "Spotify", "全部入ってる"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "最近ハマってるのは？",
+        "options": ["韓ドラ", "アニメ", "ゲーム", "SNS"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "推しに会えるなら？",
+        "options": ["握手だけ", "一緒に食事", "1日デート", "会わない派"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "学校・サークル",
+    "title": "サークルの先輩・後輩クイズ",
+    "mode": "trivia",
+    "description": "メンバー内のエピソードを出題。※ホストが事前に本人確認して設定。",
+    "questions": [
+      {
+        "text": "サークル史上、最も伝説的な先輩は誰？",
+        "options": ["A先輩", "B先輩", "C先輩", "D先輩"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "新歓コンパで一番飲んだのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "入学してから体重が一番増えたのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "サークル内カップルで一番長続きしてるのは？",
+        "options": ["AB", "CD", "EF", "いない"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "バイトを一番辞めているのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": 3,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "学校・サークル",
+    "title": "キャンパスライフあるある投票",
+    "mode": "polling",
+    "description": "学生あるあるで一気に共感！新歓や打ち上げで使える。",
+    "questions": [
+      {
+        "text": "1限、どうしてる？",
+        "options": ["絶対出る", "気合いで出る", "ほぼサボる", "そもそも取らない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "学食で一番注文するのは？",
+        "options": ["カレー", "唐揚げ定食", "ラーメン", "パスタ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "バイト代、何に使う？",
+        "options": ["遊び", "服", "貯金", "推し活"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "卒論・レポート、いつやる派？",
+        "options": ["コツコツ", "1週間前", "前日徹夜", "締切後"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "サークルの飲み、どれくらい参加？",
+        "options": ["毎回", "半分", "たまに", "ほぼ不参加"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "講義中スマホで何見てる？",
+        "options": ["SNS", "YouTube", "ちゃんとノート取ってる", "寝てる"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "学校・サークル",
+    "title": "意外と知らない学校の雑学",
+    "mode": "trivia",
+    "description": "学校や勉強にまつわる雑学。知ってると先輩・後輩に自慢できる。",
+    "questions": [
+      {
+        "text": "『ランドセル』の語源はどの国の言葉？",
+        "options": ["ドイツ", "オランダ", "フランス", "イギリス"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "鉛筆の『HB』のHは何の略？",
+        "options": ["Hard", "Heavy", "High", "Hot"],
+        "correctIndex": 0,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『運動会のBGM』でおなじみの曲の正式名は？",
+        "options": ["トルコ行進曲", "天国と地獄", "威風堂々", "くるみ割り人形"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本の学校の『黒板』、実は何色？",
+        "options": ["黒", "濃い緑", "紺色", "黒に近い灰色"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "東京大学の創立年は？",
+        "options": ["1868年", "1877年", "1890年", "1900年"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "『夏休み』の世界一長い国はどこくらい？",
+        "options": ["1ヶ月", "2ヶ月", "3ヶ月", "4ヶ月"],
+        "correctIndex": 2,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "学校・サークル",
+    "title": "この中で誰が一番？サークル暴露投票",
+    "mode": "polling",
+    "description": "匿名だからこそ本音が出る、メンバー内投票。新歓・追いコンで大盛り上がり。",
+    "questions": [
+      {
+        "text": "この中で一番モテるのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "卒業後、一番有名になりそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "単位を一番落としそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "サークルの陰のボスは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "絶対に遅刻するのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "合宿で一番活躍しそうなのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "学校・サークル",
+    "title": "青春思い出ポーリング",
+    "mode": "polling",
+    "description": "卒業前や追いコンで使える、ちょっとエモい投票ゲーム。",
+    "questions": [
+      {
+        "text": "このサークルで一番の思い出は？",
+        "options": ["合宿", "新歓", "文化祭・学祭", "普段の飲み会"],
+        "correctIndex": null,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "やっておけばよかったことは？",
+        "options": ["留学", "恋愛", "勉強", "特にない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "このメンバーに一言言うなら？",
+        "options": ["ありがとう", "大好き", "また集まろう", "一生友達"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "10年後、何人集まれると思う？",
+        "options": ["全員", "半分以上", "数人", "誰も来ない"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "もう一度学生時代に戻れる？",
+        "options": ["戻りたい", "今がいい", "別のサークルに入る", "悩む"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "バー・居酒屋",
+    "title": "お酒のうんちくマスター",
+    "mode": "trivia",
+    "description": "バーカウンターで飲みながら使える、お酒の雑学クイズ。",
+    "questions": [
+      {
+        "text": "ビールの苦味成分は何から来る？",
+        "options": ["麦芽", "ホップ", "酵母", "水"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『ハイボール』を日本で広めたウイスキーブランドは？",
+        "options": ["ジョニ黒", "角瓶", "山崎", "響"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本酒の『純米酒』と『本醸造』の違いは？",
+        "options": ["米の量", "醸造アルコール添加の有無", "水の種類", "酵母"],
+        "correctIndex": 1,
+        "timeLimitSec": 25
+      },
+      {
+        "text": "カクテル『ギムレット』のベースは？",
+        "options": ["ジン", "ウォッカ", "ラム", "テキーラ"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "ワインの渋みの正体は？",
+        "options": ["酸", "タンニン", "糖", "アルコール"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『とりあえずビール』が日本で定着したのは何時代？",
+        "options": ["大正", "昭和", "平成", "江戸"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "バー・居酒屋",
+    "title": "飲みの席あるある投票",
+    "mode": "polling",
+    "description": "居酒屋あるあるを投票で可視化。隣のテーブルも巻き込める。",
+    "questions": [
+      {
+        "text": "とりあえず最初の1杯は？",
+        "options": ["生ビール", "ハイボール", "レモンサワー", "ソフトドリンク"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "居酒屋の必須メニューは？",
+        "options": ["唐揚げ", "枝豆", "刺身", "お好み焼き"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "飲み会の締めは？",
+        "options": ["ラーメン", "お茶漬け", "アイス", "そのまま帰る"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "酔ったらどうなる？",
+        "options": ["饒舌になる", "黙る", "寝る", "泣く"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "割り勘、どうする派？",
+        "options": ["きっちり1円単位", "大体でOK", "飲んだ量で調整", "おごられる"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "居酒屋で注文しがちなのは？",
+        "options": ["枝豆→唐揚げ→刺身", "とりあえず全部", "迷って何も頼めない", "人任せ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "バー・居酒屋",
+    "title": "今夜の飲み仲間ランキング",
+    "mode": "polling",
+    "description": "グループ内で匿名投票！今夜の主役と迷惑キャラを決定。",
+    "questions": [
+      {
+        "text": "今夜一番テンション高いのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今夜絶対に記憶を失くすのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "一番お会計を気にしてるのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "この後2軒目誘いたいのは？",
+        "options": ["Aさん", "Bさん", "Cさん", "全員"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今夜の名言王は？",
+        "options": ["Aさん", "Bさん", "Cさん", "Dさん"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  },
+  {
+    "scene": "バー・居酒屋",
+    "title": "おつまみ雑学クイズ",
+    "mode": "trivia",
+    "description": "つまみをつつきながら楽しめる食べ物雑学。",
+    "questions": [
+      {
+        "text": "枝豆は大豆の何？",
+        "options": ["子ども", "親戚", "未熟な状態", "別の植物"],
+        "correctIndex": 2,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『冷奴』の『奴』の由来は？",
+        "options": ["武士の奴さんの衣装", "奴隷", "人の名前", "形が似てるから"],
+        "correctIndex": 0,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "日本人一人あたりの年間ビール消費量は？",
+        "options": ["約20L", "約40L", "約60L", "約80L"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "焼き鳥で一番人気の部位は？",
+        "options": ["もも", "ねぎま", "皮", "つくね"],
+        "correctIndex": 1,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "『居酒屋』という名前が生まれたのは何時代？",
+        "options": ["平安", "江戸", "明治", "昭和"],
+        "correctIndex": 1,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "バー・居酒屋",
+    "title": "大人の本音アンケート",
+    "mode": "polling",
+    "description": "お酒が入ってきた頃合いに、ちょっと深めの話題で盛り上がる。",
+    "questions": [
+      {
+        "text": "人生で一番後悔していることは？",
+        "options": ["恋愛", "仕事", "勉強", "特にない"],
+        "correctIndex": null,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "もし宝くじで1億円当たったら？",
+        "options": ["貯金", "家を買う", "旅行", "仕事辞める"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今、人生で一番大事なのは？",
+        "options": ["家族", "友達", "仕事", "自分"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "明日、世界が終わるとしたら？",
+        "options": ["好きな人と過ごす", "家族と過ごす", "飲み続ける", "寝る"],
+        "correctIndex": null,
+        "timeLimitSec": 20
+      },
+      {
+        "text": "5年後の自分、どうなっていたい？",
+        "options": ["今より成功", "今のまま", "全然違う場所に", "想像つかない"],
+        "correctIndex": null,
+        "timeLimitSec": 20
+      }
+    ]
+  },
+  {
+    "scene": "バー・居酒屋",
+    "title": "二択バトル！バー編",
+    "mode": "polling",
+    "description": "シンプルな2択で議論白熱。カウンターでサクッと使える。",
+    "questions": [
+      {
+        "text": "バーで頼むなら？",
+        "options": ["定番のウイスキー", "攻めのカクテル"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "飲み友達にするなら？",
+        "options": ["静かに飲める人", "朝まで付き合える人"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "お酒を飲むなら？",
+        "options": ["一人でしっぽり", "大人数でワイワイ"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "1杯だけ奢られるなら？",
+        "options": ["高級シャンパン1杯", "生ビール5杯分"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      },
+      {
+        "text": "今夜の終わり方は？",
+        "options": ["サクッと終電", "始発まで飲む"],
+        "correctIndex": null,
+        "timeLimitSec": 15
+      }
+    ]
+  }
+]
