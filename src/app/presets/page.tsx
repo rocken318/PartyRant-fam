@@ -136,6 +136,7 @@ export default function PresetsPage() {
       if (!res.ok) throw new Error();
       const game = await res.json() as Game;
       router.push(`/play/${game.id}`);
+      setAiGenerating(false);
     } catch {
       setAiError(true);
       setAiGenerating(false);
@@ -190,8 +191,9 @@ export default function PresetsPage() {
               <div className="bg-white/10 px-4 py-4 flex flex-col gap-4">
                 {/* テーマ入力 */}
                 <div className="flex flex-col gap-1.5">
-                  <p className="text-xs font-bold text-white/80 uppercase tracking-widest">{t('aiThemeLabel')}</p>
+                  <label htmlFor="ai-theme" className="text-xs font-bold text-white/80 uppercase tracking-widest">{t('aiThemeLabel')}</label>
                   <input
+                    id="ai-theme"
                     type="text"
                     value={aiTheme}
                     onChange={e => { setAiTheme(e.target.value); setAiError(false); }}
