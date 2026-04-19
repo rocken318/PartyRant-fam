@@ -58,6 +58,11 @@ export default async function LandingPage() {
         >
           {t('joinGame')}
         </Link>
+
+        {/* 使い方ガイド */}
+        <Link href="/guide" className="text-gray-400 text-sm underline text-center">
+          {t('guide')}
+        </Link>
       </div>
     </main>
   );
