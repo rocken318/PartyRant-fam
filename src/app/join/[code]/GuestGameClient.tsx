@@ -57,6 +57,9 @@ export default function GuestGameClient({ code }: Props) {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   // Incremented on each new question to invalidate in-flight answer submissions
   const answerTokenRef = useRef(0);
+  // Tracks which question index we are currently displaying, used to
+  // guard against stale question_ended events arriving after question_started
+  const expectedQuestionIndexRef = useRef(-1);
 
   useEffect(() => {
     async function load() {
@@ -81,8 +84,10 @@ export default function GuestGameClient({ code }: Props) {
           setPlayerId(saved.playerId);
           setDisplayName(saved.displayName);
           if (data.status === 'lobby') setGuestState('lobby');
-          else if (data.status === 'question') setGuestState('question');
-          else if (data.status === 'reveal') setGuestState('reveal');
+          else if (data.status === 'question') {
+            expectedQuestionIndexRef.current = data.currentQuestionIndex;
+            setGuestState('question');
+          } else if (data.status === 'reveal') setGuestState('reveal');
           else if (data.status === 'ended') setGuestState('ended');
           else setGuestState('lobby');
         } else {
@@ -140,6 +145,7 @@ export default function GuestGameClient({ code }: Props) {
       switch (event.type) {
         case 'game_started':
           answerTokenRef.current++;
+          expectedQuestionIndexRef.current = event.game.currentQuestionIndex;
           setGame(event.game);
           setGuestState('question');
           setSelectedChoice(null);
@@ -148,6 +154,7 @@ export default function GuestGameClient({ code }: Props) {
           break;
         case 'question_started':
           answerTokenRef.current++;
+          expectedQuestionIndexRef.current = event.questionIndex;
           setGame((prev) =>
             prev
               ? { ...prev, currentQuestionIndex: event.questionIndex, currentQuestionStartedAt: event.startedAt, status: 'question' }
@@ -160,7 +167,11 @@ export default function GuestGameClient({ code }: Props) {
           setTimePercent(100);
           break;
         case 'question_ended':
-          setGuestState('reveal');
+          // Guard against stale question_ended events arriving after question_started
+          // for the next question (race condition when host advances quickly)
+          if (expectedQuestionIndexRef.current === event.questionIndex) {
+            setGuestState('reveal');
+          }
           break;
         case 'game_ended':
           setGame(event.game);
