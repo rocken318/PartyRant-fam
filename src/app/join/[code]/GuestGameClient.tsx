@@ -51,6 +51,7 @@ export default function GuestGameClient({ code }: Props) {
   const [loadError, setLoadError] = useState('');
   const [localQuestionIndex, setLocalQuestionIndex] = useState(0);
   const [leaderboard, setLeaderboard] = useState<import('@/types/domain').Score[]>([]);
+  const [endAnswers, setEndAnswers] = useState<Answer[]>([]);
 
   const [timedOut, setTimedOut] = useState(false);
   const { savePlayer, clearPlayer } = useLocalPlayer(gameId ?? '');
@@ -93,7 +94,22 @@ export default function GuestGameClient({ code }: Props) {
             expectedQuestionIndexRef.current = data.currentQuestionIndex;
             setGuestState('question');
           } else if (data.status === 'reveal') setGuestState('reveal');
-          else if (data.status === 'ended') setGuestState('ended');
+          else if (data.status === 'ended') {
+            setGuestState('ended');
+            Promise.all([
+              fetch(`/api/games/${data.id}/scores`),
+              fetch(`/api/games/${data.id}/answers`),
+            ])
+              .then(([scoresRes, answersRes]) => Promise.all([
+                scoresRes.ok ? scoresRes.json() : [],
+                answersRes.ok ? answersRes.json() : [],
+              ]))
+              .then(([scores, answers]) => {
+                setLeaderboard(scores as import('@/types/domain').Score[]);
+                setEndAnswers(answers as Answer[]);
+              })
+              .catch(() => {});
+          }
           else setGuestState('lobby');
         } else {
           setGuestState('name_input');
@@ -202,9 +218,18 @@ export default function GuestGameClient({ code }: Props) {
           setGame(event.game);
           setGuestState('ended');
           if (gameId) {
-            fetch(`/api/games/${gameId}/scores`)
-              .then(r => r.ok ? r.json() : [])
-              .then((scores: import('@/types/domain').Score[]) => setLeaderboard(scores))
+            Promise.all([
+              fetch(`/api/games/${gameId}/scores`),
+              fetch(`/api/games/${gameId}/answers`),
+            ])
+              .then(([scoresRes, answersRes]) => Promise.all([
+                scoresRes.ok ? scoresRes.json() : [],
+                answersRes.ok ? answersRes.json() : [],
+              ]))
+              .then(([scores, answers]) => {
+                setLeaderboard(scores as import('@/types/domain').Score[]);
+                setEndAnswers(answers as Answer[]);
+              })
               .catch(() => {});
           }
           break;
@@ -587,7 +612,7 @@ export default function GuestGameClient({ code }: Props) {
                   className="text-gray-400"
                   style={{ fontFamily: 'var(--font-bebas)', fontSize: '2rem', lineHeight: 1 }}
                 >
-                  未回答
+                  {t('noAnswer')}
                 </p>
               )}
             </div>
@@ -692,6 +717,40 @@ export default function GuestGameClient({ code }: Props) {
                       </span>
                     </div>
                     <span className="font-bold text-sm">{score.totalPoints} {t('pts')}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {game.mode === 'polling' && (
+            <div className="flex flex-col gap-4">
+              <h2 className="text-pr-dark text-2xl" style={{ fontFamily: 'var(--font-bebas)' }}>{t('results')}</h2>
+              {game.questions.map((q, qi) => {
+                const qAnswers = endAnswers.filter(a => a.questionId === q.id);
+                const totalVotes = qAnswers.length;
+                const BG = ['#FF0080', '#FFD600', '#00C472', '#3B82F6'];
+                const FG = ['#fff', '#111', '#fff', '#fff'];
+                return (
+                  <div key={q.id} className="flex flex-col gap-2 p-3 bg-white rounded-[8px] border-[3px] border-pr-dark shadow-[3px_3px_0_#111]">
+                    <p className="font-bold text-sm text-pr-dark" style={{ fontFamily: 'var(--font-dm)' }}>{qi + 1}. {q.text}</p>
+                    <div className="flex flex-col gap-1.5">
+                      {q.options.map((option, j) => {
+                        const votes = qAnswers.filter(a => a.choiceIndex === j).length;
+                        const pct = totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
+                        return (
+                          <div key={j} className="rounded-[4px] border-[2px] border-pr-dark px-3 py-2" style={{ backgroundColor: BG[j % 4] }}>
+                            <div className="flex justify-between items-center mb-1">
+                              <span className="font-bold text-xs" style={{ color: FG[j % 4] }}>{option}</span>
+                              <span className="text-xs font-bold" style={{ color: FG[j % 4], opacity: 0.8 }}>{votes} ({pct}%)</span>
+                            </div>
+                            <div className="w-full h-1.5 rounded-full" style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
+                              <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: 'rgba(255,255,255,0.5)' }} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 );
               })}

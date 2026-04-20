@@ -58,7 +58,8 @@
     "nextQuestion": "次の問題 →",
     "seeResults": "🏆 結果を見る",
     "done": "完了！",
-    "points": "ポイント"
+    "points": "ポイント",
+    "noAnswer": "未回答"
   },
   "hostDashboard": {
     "myEvents": "マイイベント",
