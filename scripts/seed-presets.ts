@@ -95,12 +95,25 @@ async function main() {
 
   console.log(`Total: ${presets.length} presets to insert.`);
 
-  // Delete existing presets first (clean re-seed)
-  const { error: delErr } = await supabase.from('games').delete().eq('is_preset', true);
-  if (delErr) {
-    console.warn('Warning: could not delete existing presets:', delErr.message);
+  // Delete only party presets (those whose questions lack a 'grade' field).
+  // This avoids wiping family-quiz presets seeded by seed-famquiz.ts.
+  const { data: existing, error: listErr } = await supabase
+    .from('games')
+    .select('id, questions')
+    .eq('is_preset', true);
+  if (listErr) {
+    console.warn('Warning: could not list existing presets:', listErr.message);
   } else {
-    console.log('Cleared existing presets.');
+    const partyIds = (existing ?? [])
+      .filter(r => !(r.questions as { grade?: number }[])?.[0]?.grade)
+      .map(r => r.id as string);
+    if (partyIds.length > 0) {
+      const { error: delErr } = await supabase.from('games').delete().in('id', partyIds);
+      if (delErr) console.warn('Warning: could not delete existing party presets:', delErr.message);
+      else console.log(`Cleared ${partyIds.length} existing party presets.`);
+    } else {
+      console.log('No existing party presets to clear.');
+    }
   }
 
   let inserted = 0;

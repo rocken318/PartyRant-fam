@@ -27,6 +27,7 @@ interface State {
 type Action =
   | { type: 'LOADED'; game: Game; players: Player[]; answers: Answer[] }
   | { type: 'SYNCED'; game: Game; players: Player[]; answers: Answer[] }
+  | { type: 'PLAYERS_POLLED'; players: Player[] }
   | { type: 'ERROR'; message: string }
   | { type: 'GAME_UPDATED'; game: Game }
   | { type: 'PLAYER_JOINED'; player: Player }
@@ -45,6 +46,8 @@ function reducer(state: State, action: Action): State {
       return { ...state, loading: false, error: action.message };
     case 'GAME_UPDATED':
       return { ...state, game: action.game };
+    case 'PLAYERS_POLLED':
+      return { ...state, players: action.players };
     case 'PLAYER_JOINED':
       if (state.players.some((p) => p.id === action.player.id)) return state;
       return { ...state, players: [...state.players, action.player] };
@@ -189,6 +192,20 @@ export function PlayGameClient({ gameId }: { gameId: string }) {
   }, [gameId]);
 
   useGameStream(gameId, handleEvent);
+
+  // Supabase Realtime broadcasts can be delayed. Poll players every 3 s while
+  // in lobby so new joiners appear immediately without waiting for SSE reconnect.
+  useEffect(() => {
+    if (!game || game.status !== 'lobby') return;
+    const interval = setInterval(() => {
+      fetch(`/api/games/${gameId}/players`)
+        .then(r => r.ok ? r.json() as Promise<Player[]> : Promise.resolve(null))
+        .then(data => { if (data) dispatch({ type: 'PLAYERS_POLLED', players: data }); })
+        .catch(() => {});
+    }, 3000);
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameId, game?.status]);
 
   const handleAdvance = async () => {
     const updated = await advanceGame(gameId);
