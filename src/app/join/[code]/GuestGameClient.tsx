@@ -52,6 +52,7 @@ export default function GuestGameClient({ code }: Props) {
   const [localQuestionIndex, setLocalQuestionIndex] = useState(0);
   const [leaderboard, setLeaderboard] = useState<import('@/types/domain').Score[]>([]);
   const [endAnswers, setEndAnswers] = useState<Answer[]>([]);
+  const [endResultsStatus, setEndResultsStatus] = useState<'idle' | 'loading' | 'loaded' | 'error'>('idle');
 
   const [timedOut, setTimedOut] = useState(false);
   const { savePlayer, clearPlayer } = useLocalPlayer(gameId ?? '');
@@ -96,19 +97,7 @@ export default function GuestGameClient({ code }: Props) {
           } else if (data.status === 'reveal') setGuestState('reveal');
           else if (data.status === 'ended') {
             setGuestState('ended');
-            Promise.all([
-              fetch(`/api/games/${data.id}/scores`),
-              fetch(`/api/games/${data.id}/answers`),
-            ])
-              .then(([scoresRes, answersRes]) => Promise.all([
-                scoresRes.ok ? scoresRes.json() : [],
-                answersRes.ok ? answersRes.json() : [],
-              ]))
-              .then(([scores, answers]) => {
-                setLeaderboard(scores as import('@/types/domain').Score[]);
-                setEndAnswers(answers as Answer[]);
-              })
-              .catch(() => {});
+            fetchEndResults(data.id);
           }
           else setGuestState('lobby');
         } else {
@@ -217,28 +206,29 @@ export default function GuestGameClient({ code }: Props) {
         case 'game_ended':
           setGame(event.game);
           setGuestState('ended');
-          if (gameId) {
-            Promise.all([
-              fetch(`/api/games/${gameId}/scores`),
-              fetch(`/api/games/${gameId}/answers`),
-            ])
-              .then(([scoresRes, answersRes]) => Promise.all([
-                scoresRes.ok ? scoresRes.json() : [],
-                answersRes.ok ? answersRes.json() : [],
-              ]))
-              .then(([scores, answers]) => {
-                setLeaderboard(scores as import('@/types/domain').Score[]);
-                setEndAnswers(answers as Answer[]);
-              })
-              .catch(() => {});
-          }
+          fetchEndResults(event.game.id);
           break;
         default:
           break;
       }
     },
-    [guestState]
+    [gameId]
   );
+
+  async function fetchEndResults(id: string) {
+    setEndResultsStatus('loading');
+    try {
+      const [scoresRes, answersRes] = await Promise.all([
+        fetch(`/api/games/${id}/scores`),
+        fetch(`/api/games/${id}/answers`),
+      ]);
+      setLeaderboard(scoresRes.ok ? await scoresRes.json() as import('@/types/domain').Score[] : []);
+      setEndAnswers(answersRes.ok ? await answersRes.json() as Answer[] : []);
+      setEndResultsStatus('loaded');
+    } catch {
+      setEndResultsStatus('error');
+    }
+  }
 
   useGameStream(gameId, handleEvent);
 
@@ -723,7 +713,23 @@ export default function GuestGameClient({ code }: Props) {
             </div>
           )}
 
-          {game.mode === 'polling' && (
+          {game.mode === 'polling' && endResultsStatus === 'loading' && (
+            <div className="flex justify-center py-8">
+              <div className="w-10 h-10 border-4 border-pr-pink border-t-transparent rounded-full animate-spin" />
+            </div>
+          )}
+
+          {game.mode === 'polling' && endResultsStatus === 'error' && (
+            <div className="flex flex-col items-center gap-3 py-8">
+              <p className="text-pr-dark font-bold">{t('loadError')}</p>
+              <button type="button" onClick={() => game && fetchEndResults(game.id)}
+                className="px-6 py-2 bg-pr-pink text-white font-bold rounded-[6px] border-[3px] border-pr-dark shadow-[3px_3px_0_#111]">
+                {t('retry')}
+              </button>
+            </div>
+          )}
+
+          {game.mode === 'polling' && endResultsStatus === 'loaded' && (
             <div className="flex flex-col gap-4">
               <h2 className="text-pr-dark text-2xl" style={{ fontFamily: 'var(--font-bebas)' }}>{t('results')}</h2>
               {game.questions.map((q, qi) => {
