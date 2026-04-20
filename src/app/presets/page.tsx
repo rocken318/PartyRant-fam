@@ -8,6 +8,8 @@ import type { Game } from '@/types/domain';
 import { SUBJECT_LABELS, SUBJECT_ICONS, GRADE_GROUPS } from '@/types/domain';
 import type { Subject } from '@/types/domain';
 import PresetPreviewDrawer from '@/components/PresetPreviewDrawer';
+import { GradeRangeSelector } from '@/components/GradeRangeSelector';
+import { SubjectSelector } from '@/components/SubjectSelector';
 
 const SCENE_META: Record<string, { icon: string; color: string }> = {
   'みんなで':       { icon: '🎉', color: '#8B5CF6' },
@@ -32,8 +34,14 @@ const TYPE_META: Record<string, { label: string; icon: string; color: string }> 
 
 const COUNT_OPTIONS = [5, 10, 15] as const;
 
-type SettingsMode =
-  | { type: 'trivia'; count: number; scene: string | null };
+type SettingsMode = {
+  type: 'trivia';
+  count: number;
+  scene: string | null;
+  gradeMin: number;
+  gradeMax: number;
+  subject: Subject | null;
+};
 
 export default function PresetsPage() {
   const t = useTranslations('presets');
@@ -132,7 +140,13 @@ export default function PresetsPage() {
       const res = await fetch('/api/trivia/random', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ count: settings.count, scene: settings.scene }),
+        body: JSON.stringify({
+          count: settings.count,
+          scene: settings.scene,
+          gradeMin: settings.gradeMin,
+          gradeMax: settings.gradeMax,
+          subject: settings.subject,
+        }),
       });
       if (!res.ok) throw new Error();
       const game = await res.json() as Game;
@@ -309,7 +323,7 @@ export default function PresetsPage() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setSettings(s => s?.type === 'trivia' ? null : { type: 'trivia', count: 10, scene: null })}
+                  onClick={() => setSettings(s => s?.type === 'trivia' ? null : { type: 'trivia', count: 10, scene: null, gradeMin: 1, gradeMax: 12, subject: null })}
                   disabled={randomStarting !== null || starting !== null}
                   className="flex-shrink-0 h-10 px-4 bg-pr-dark text-white font-bold text-sm rounded-[6px] border-[2px] border-pr-dark disabled:opacity-50 touch-manipulation hover:bg-pr-dark/90 transition-colors"
                   style={{ fontFamily: 'var(--font-dm)' }}
@@ -319,7 +333,18 @@ export default function PresetsPage() {
               </div>
 
               {settings?.type === 'trivia' && (
-                <div className="px-4 py-3 flex flex-col gap-3">
+                <div className="px-4 py-3 flex flex-col gap-4">
+                  <GradeRangeSelector
+                    gradeMin={settings.gradeMin}
+                    gradeMax={settings.gradeMax}
+                    onChange={(min, max) => setSettings({ ...settings, gradeMin: min, gradeMax: max })}
+                  />
+
+                  <SubjectSelector
+                    value={settings.subject}
+                    onChange={sub => setSettings({ ...settings, subject: settings.subject === sub ? null : sub })}
+                  />
+
                   <div className="flex flex-col gap-1.5">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('settingsCountLabel')}</p>
                     <div className="flex gap-2">
