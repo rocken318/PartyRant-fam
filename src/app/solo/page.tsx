@@ -237,6 +237,34 @@ export default function SoloPage() {
         </p>
         <p className="text-2xl font-bold text-pf-green">{pct}%</p>
 
+        {/* 問題別復習リスト */}
+        <div className="w-full flex flex-col border-[3px] border-pf-dark rounded-[12px] overflow-hidden shadow-[4px_4px_0_#1A1A2E]">
+          {questions.map((q, i) => {
+            const a = answers[i];
+            if (!a) return null;
+            const correctText = q.correctIndex !== undefined ? q.options[q.correctIndex] : null;
+            const myText = a.choiceIndex >= 0 ? q.options[a.choiceIndex] : null;
+            return (
+              <div key={q.id} className="px-4 py-3 border-b border-gray-100 last:border-b-0">
+                <div className="flex items-start gap-2">
+                  <span className="text-base shrink-0">{a.correct ? '⭕️' : '❌'}</span>
+                  <p className="text-sm font-bold text-pf-dark leading-snug">{q.text}</p>
+                </div>
+                {correctText && (
+                  <p className="text-xs font-bold text-pf-green mt-1 pl-6">
+                    正解: {correctText}
+                  </p>
+                )}
+                {!a.correct && myText && (
+                  <p className="text-xs text-red-500 mt-0.5 pl-6">
+                    あなた: {myText}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
         <div className="w-full flex flex-col gap-3 mt-6">
           <button
             type="button"
