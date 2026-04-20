@@ -91,7 +91,7 @@ export function HeroSection({ tagline, headline, sub, cta1, cta2 }: Props) {
         {/* CTAボタン */}
         <div className="flex flex-col gap-3 w-full max-w-[320px] mt-2">
           <Link
-            href="/auth/login"
+            href="/solo"
             className="w-full h-14 bg-white text-pr-dark flex items-center justify-center text-base font-bold rounded-[6px] border-[3px] border-pr-dark shadow-[5px_5px_0_#111] active:shadow-[2px_2px_0_#111] active:translate-x-[2px] active:translate-y-[2px] transition-[transform,box-shadow] duration-75 touch-manipulation"
             style={{ fontFamily: 'var(--font-dm)' }}
           >
