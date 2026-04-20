@@ -23,8 +23,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'PartyRant',
-  description: 'パーティーやイベントのためのリアルタイムクイズ＆投票',
+  title: 'PartyRant Family',
+  description: '家族で学ぶ、いちばん楽しい方法。小1〜高3の問題でクイズ対決！',
 };
 
 export default async function RootLayout({
