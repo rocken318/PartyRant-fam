@@ -15,7 +15,7 @@
 
 | ファイル | 変更内容 |
 |----------|----------|
-| `PartyRant-fam/src/app/solo/page.tsx` | フィードバックパネル追加、自動進行→手動進行 |
+| `PartyRant-fam/src/app/solo/page.tsx` | フィードバックパネル追加、自動進行→手動進行、結果画面に問題別復習リスト追加 |
 | `PartyRant-jp/src/app/join/[code]/GuestGameClient.tsx` | `sp_answered`状態に「あなたの回答」追加 |
 
 ---
@@ -43,6 +43,10 @@
 - `selected !== null` → フィードバックパネル表示
 - `selected === q.correctIndex` → 正解
 - `q.correctIndex === undefined` → 正解不明（パネルは「回答しました」表示のみ）
+
+**stateの変更:**
+- `answers`の型を `{ correct: boolean }[]` → `{ correct: boolean; choiceIndex: number }[]` に拡張
+- `handleAnswer`で`choiceIndex`も保存するよう修正
 
 ---
 
@@ -96,9 +100,49 @@
 
 ---
 
+## 結果画面：問題別復習リスト（fam solo）
+
+既存の「8 / 10問正解 / 80%」の下に問題別一覧を追加する。
+
+**表示内容（全問題）:**
+- 問N ⭕️ or ❌
+- 問題文（truncate可）
+- 正解テキスト（常時）：`正解: {q.options[q.correctIndex]}`
+- 不正解時のみ追加：`あなた: {q.options[answers[i].choiceIndex]}`
+
+**UIレイアウト（結果画面追加部分）:**
+```
+結果
+🎉
+8 / 10問正解
+80%
+
+┌──────────────────────────────┐
+│ 問1 ⭕️ 日本の首都は？        │
+│      正解: 東京都             │
+├──────────────────────────────┤
+│ 問2 ❌ 四国の県の数は？       │
+│      正解: 4県                │
+│      あなた: 3県              │
+├──────────────────────────────┤
+│ 問3 ⭕️ ...                   │
+│      正解: ...                │
+└──────────────────────────────┘
+
+[もう一度やる]  [トップへ]
+```
+
+**スタイリング:**
+- 各行: `border-b border-gray-100 py-3`
+- ⭕️行: 問題文 `text-pf-dark font-bold`
+- ❌行: 問題文 `text-pf-dark font-bold`
+- 正解テキスト: `text-pf-green text-sm font-bold`
+- 自分の回答テキスト（不正解時）: `text-red-500 text-sm`
+
+---
+
 ## 変更しないこと
 
 - タイマーロジック（時間切れ時は`handleAnswer(-1)`で不正解扱い、そのままフィードバックパネルへ）
-- 結果画面の構造
 - `sp_answered`の既存ポイント表示部分（jpのみ）
 - 自動進行のタイミング以外のstateマネジメント
