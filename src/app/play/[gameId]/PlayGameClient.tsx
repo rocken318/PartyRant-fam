@@ -20,7 +20,6 @@ interface State {
   players: Player[];
   answers: Answer[];
   scores: Score[];
-  opinionResults: OpinionResult[];
   loading: boolean;
   error: string | null;
 }
@@ -32,7 +31,6 @@ type Action =
   | { type: 'PLAYER_JOINED'; player: Player }
   | { type: 'ANSWER_SUBMITTED'; answer: Answer }
   | { type: 'SCORES_LOADED'; scores: Score[] }
-  | { type: 'OPINION_RESULTS_LOADED'; opinionResults: OpinionResult[] }
   | { type: 'QUESTION_STARTED'; questionIndex: number; startedAt: number }
   | { type: 'QUESTION_ENDED' };
 
@@ -52,8 +50,6 @@ function reducer(state: State, action: Action): State {
       return { ...state, answers: [...state.answers, action.answer] };
     case 'SCORES_LOADED':
       return { ...state, scores: action.scores };
-    case 'OPINION_RESULTS_LOADED':
-      return { ...state, opinionResults: action.opinionResults };
     case 'QUESTION_STARTED':
       if (!state.game) return state;
       return {
@@ -74,7 +70,7 @@ function reducer(state: State, action: Action): State {
 }
 
 const initialState: State = {
-  game: null, players: [], answers: [], scores: [], opinionResults: [], loading: true, error: null,
+  game: null, players: [], answers: [], scores: [], loading: true, error: null,
 };
 
 function computeScores(game: Game, players: Player[], answers: Answer[]): Score[] {
@@ -96,36 +92,6 @@ function computeScores(game: Game, players: Player[], answers: Answer[]): Score[
     }
   }
   return Array.from(scoreMap.values()).sort((a, b) => b.totalPoints - a.totalPoints);
-}
-
-interface OpinionResult {
-  playerId: string;
-  displayName: string;
-  lossCount: number;
-}
-
-function computeOpinionResults(game: Game, players: Player[], answers: Answer[]): OpinionResult[] {
-  const resultMap = new Map<string, OpinionResult>();
-  for (const player of players) {
-    resultMap.set(player.id, { playerId: player.id, displayName: player.displayName, lossCount: 0 });
-  }
-  const loseRule = game.loseRule ?? 'minority';
-  for (const question of game.questions) {
-    const qAnswers = answers.filter((a) => a.questionId === question.id);
-    if (qAnswers.length === 0) continue;
-    const voteCounts = question.options.map((_, i) => qAnswers.filter((a) => a.choiceIndex === i).length);
-    const nonZero = voteCounts.filter(v => v > 0);
-    if (nonZero.length <= 1) continue;
-    const threshold = loseRule === 'minority' ? Math.min(...nonZero) : Math.max(...nonZero);
-    const losingIndices = new Set(voteCounts.map((v, i) => v === threshold ? i : -1).filter(i => i >= 0));
-    for (const ans of qAnswers) {
-      if (losingIndices.has(ans.choiceIndex)) {
-        const existing = resultMap.get(ans.playerId);
-        if (existing) resultMap.set(ans.playerId, { ...existing, lossCount: existing.lossCount + 1 });
-      }
-    }
-  }
-  return Array.from(resultMap.values()).sort((a, b) => b.lossCount - a.lossCount);
 }
 
 async function advanceGame(gameId: string): Promise<Game | null> {
@@ -168,7 +134,7 @@ function PinkBtn({
 export function PlayGameClient({ gameId }: { gameId: string }) {
   const t = useTranslations('hostGame');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { game, players, answers, scores, opinionResults, loading, error } = state;
+  const { game, players, answers, scores, loading, error } = state;
 
   useEffect(() => {
     const load = async () => {
@@ -192,9 +158,6 @@ export function PlayGameClient({ gameId }: { gameId: string }) {
     if (!game) return;
     if ((game.status === 'reveal' || game.status === 'ended') && game.mode === 'trivia') {
       dispatch({ type: 'SCORES_LOADED', scores: computeScores(game, players, answers) });
-    }
-    if (game.status === 'ended' && game.mode === 'opinion') {
-      dispatch({ type: 'OPINION_RESULTS_LOADED', opinionResults: computeOpinionResults(game, players, answers) });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [game?.status, answers.length, players.length]);
@@ -395,54 +358,6 @@ export function PlayGameClient({ gameId }: { gameId: string }) {
                 })}
               </div>
             )}
-
-            {game.mode === 'opinion' && opinionResults.length > 0 && (() => {
-              const maxLoss = opinionResults[0].lossCount;
-              const minLoss = opinionResults[opinionResults.length - 1].lossCount;
-              return (
-                <div className="flex flex-col gap-4">
-                  <div className="text-center">
-                    <h3 className="text-pr-dark text-5xl" style={{ fontFamily: 'var(--font-bebas)' }}>
-                      {t('opinionReveal')}
-                    </h3>
-                    <p className="text-gray-500 text-sm font-bold mt-1">
-                      {game.loseRule === 'majority' ? t('opinionMajorityRule') : t('opinionMinorityRule')}
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    {opinionResults.map((r) => {
-                      const isLoser = r.lossCount === maxLoss && maxLoss > 0;
-                      const isWinner = r.lossCount === minLoss && opinionResults.length > 1;
-                      return (
-                        <div key={r.playerId}
-                          className={[
-                            'flex flex-col items-center gap-1 p-4 rounded-[8px] border-[3px] text-center',
-                            isLoser
-                              ? 'bg-red-500 border-red-700 shadow-[4px_4px_0_#7f1d1d] text-white'
-                              : isWinner
-                              ? 'bg-yellow-50 border-yellow-400 shadow-[3px_3px_0_#a16207] text-pr-dark'
-                              : 'bg-white border-pr-dark shadow-[3px_3px_0_#111] text-pr-dark',
-                          ].join(' ')}
-                        >
-                          <span className="text-2xl">{isLoser ? '💀' : isWinner ? '👑' : '😐'}</span>
-                          <span className="font-bold text-sm leading-tight" style={{ fontFamily: 'var(--font-dm)' }}>
-                            {r.displayName}
-                          </span>
-                          <span className={['text-xs font-bold', isLoser ? 'text-red-100' : 'text-gray-500'].join(' ')}>
-                            {t('opinionLoseCount', { count: r.lossCount })}
-                          </span>
-                          {isLoser && (
-                            <span className="text-xs font-bold bg-red-700 text-white px-2 py-0.5 rounded-full mt-1">
-                              {t('opinionLoser')}
-                            </span>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })()}
 
             <Link
               href="/presets"

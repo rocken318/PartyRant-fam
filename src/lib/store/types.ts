@@ -1,4 +1,4 @@
-import type { Game, GameType, GameStatus, PlayMode, LoseRule, Player, Answer, Question, Event } from '@/types/domain';
+import type { Game, GameType, GameStatus, PlayMode, Player, Answer, Question, Event } from '@/types/domain';
 
 export interface CreateEventInput {
   hostId: string;
@@ -13,7 +13,6 @@ export interface CreateGameInput {
   title: string;
   description?: string;
   scene?: string;
-  loseRule?: LoseRule;
   questions: Omit<Question, 'id' | 'order'>[];
 }
 

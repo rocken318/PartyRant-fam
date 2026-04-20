@@ -7,9 +7,8 @@ import { store } from '@/lib/store';
 
 const schema = z.object({
   theme: z.string().min(1).max(50).transform(s => s.replace(/[`"\\]/g, '').trim()),
-  mode: z.enum(['trivia', 'polling', 'opinion']),
+  mode: z.enum(['trivia', 'polling']),
   count: z.number().int().min(3).max(15),
-  loseRule: z.enum(['minority', 'majority']).optional(),
 });
 
 function buildPrompt(theme: string, mode: string, count: number): string {
@@ -28,8 +27,8 @@ function buildPrompt(theme: string, mode: string, count: number): string {
 - 日本語で出力`;
   }
 
-  if (mode === 'polling') {
-    return `あなたはパーティーゲームの問題作成AIです。
+  // polling
+  return `あなたはパーティーゲームの問題作成AIです。
 テーマ「${theme}」について、参加者の本音を引き出すアンケート問題を${count}問作ってください。
 
 以下のJSON形式で返してください：
@@ -40,20 +39,6 @@ function buildPrompt(theme: string, mode: string, count: number): string {
 - 選択肢は2〜4個
 - correctIndex は必ず null
 - 参加者同士の会話が弾む内容
-- 日本語で出力`;
-  }
-
-  return `あなたはパーティーゲームの問題作成AIです。
-テーマ「${theme}」について、グループで多数派・少数派に分かれる問題を${count}問作ってください。
-
-以下のJSON形式で返してください：
-{"questions": [{"text": "質問文", "options": ["選択肢A", "選択肢B"], "correctIndex": null, "timeLimitSec": 12}]}
-
-条件：
-- どちらが多数派かわからないくらい意見が割れる問題
-- 盛り上がる・笑える・本音が出る内容
-- 選択肢は2〜3個
-- correctIndex は必ず null
 - 日本語で出力`;
 }
 
@@ -101,7 +86,7 @@ export async function POST(req: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json({ error: parsed.error.message }, { status: 400 });
     }
-    const { theme, mode, count, loseRule } = parsed.data;
+    const { theme, mode, count } = parsed.data;
 
     const prompt = buildPrompt(theme, mode, count);
 
@@ -134,14 +119,12 @@ export async function POST(req: NextRequest) {
     const modeLabel: Record<string, string> = {
       trivia: '🧠',
       polling: '📊',
-      opinion: loseRule === 'minority' ? '🦄' : '🐑',
     };
 
     const game = await store.createGame({
       mode,
       gameMode: 'live',
-      ...(mode === 'opinion' && loseRule ? { loseRule } : {}),
-      title: `${modeLabel[mode]} ${theme}`,
+      title: `${modeLabel[mode] ?? ''} ${theme}`,
       questions,
     });
 

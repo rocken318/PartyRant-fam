@@ -20,8 +20,7 @@ const questionSchema = z.object({
 });
 
 const schema = z.object({
-  mode: z.enum(['trivia', 'polling', 'opinion']),
-  loseRule: z.enum(['minority', 'majority']).optional(),
+  mode: z.enum(['trivia', 'polling']),
   gameMode: z.enum(['live', 'self_paced']),
   title: z.string().min(1, 'Required').max(80),
   questions: z.array(questionSchema).min(1).max(10),
@@ -45,7 +44,7 @@ export default function NewGamePage() {
 
   const { register, control, handleSubmit, watch, setValue, formState: { errors, isSubmitting } } = useForm<LocalFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { mode: 'trivia', loseRule: 'minority', gameMode: 'live', title: '', questions: [defaultQuestion()] },
+    defaultValues: { mode: 'trivia', gameMode: 'live', title: '', questions: [defaultQuestion()] },
   });
 
   const { fields, append, remove } = useFieldArray({ control, name: 'questions' });
@@ -56,7 +55,6 @@ export default function NewGamePage() {
     const body = {
       eventId,
       mode: data.mode,
-      loseRule: data.loseRule,
       gameMode: data.gameMode,
       title: data.title,
       questions: data.questions.map((q, i) => ({
@@ -94,47 +92,23 @@ export default function NewGamePage() {
           <div className="flex flex-col gap-3">
             <Label className="font-bold uppercase tracking-widest text-xs text-gray-500">{t('gameTypeSectionLabel')}</Label>
             <Controller control={control} name="mode" render={({ field }) => (
-              <div className="grid grid-cols-3 gap-3">
-                {(['trivia', 'polling', 'opinion'] as const).map(m => (
+              <div className="grid grid-cols-2 gap-3">
+                {(['trivia', 'polling'] as const).map(m => (
                   <button key={m} type="button" onClick={() => field.onChange(m)}
                     className={['flex flex-col items-center gap-2 p-4 rounded-[8px] border-[3px] border-pr-dark transition-[box-shadow,transform] duration-75 touch-manipulation min-h-[96px]',
                       field.value === m ? 'bg-pr-pink text-white shadow-[2px_2px_0_#111] translate-x-[2px] translate-y-[2px]' : 'bg-white text-pr-dark shadow-[4px_4px_0_#111]'].join(' ')}>
-                    <span className="text-2xl">{m === 'trivia' ? '🧠' : m === 'polling' ? '📊' : '⚔️'}</span>
+                    <span className="text-2xl">{m === 'trivia' ? '🧠' : '📊'}</span>
                     <span className="font-bold text-xs text-center" style={{ fontFamily: 'var(--font-dm)' }}>
-                      {m === 'trivia' ? t('triviaLabel') : m === 'polling' ? t('pollingLabel') : t('opinionLabel')}
+                      {m === 'trivia' ? t('triviaLabel') : t('pollingLabel')}
                     </span>
                     <span className="text-xs text-center opacity-70">
-                      {m === 'trivia' ? t('triviaDescription') : m === 'polling' ? t('pollingDescription') : t('opinionDescription')}
+                      {m === 'trivia' ? t('triviaDescription') : t('pollingDescription')}
                     </span>
                   </button>
                 ))}
               </div>
             )} />
           </div>
-
-          {/* Lose rule (opinion only) */}
-          {mode === 'opinion' && (
-            <div className="flex flex-col gap-3">
-              <Label className="font-bold uppercase tracking-widest text-xs text-gray-500">{t('loseRuleSectionLabel')}</Label>
-              <Controller control={control} name="loseRule" render={({ field }) => (
-                <div className="grid grid-cols-2 gap-3">
-                  {(['minority', 'majority'] as const).map(r => (
-                    <button key={r} type="button" onClick={() => field.onChange(r)}
-                      className={['flex flex-col items-center gap-2 p-5 rounded-[8px] border-[3px] border-pr-dark transition-[box-shadow,transform] duration-75 touch-manipulation min-h-[96px]',
-                        field.value === r ? 'bg-pr-dark text-white shadow-[2px_2px_0_#111] translate-x-[2px] translate-y-[2px]' : 'bg-white text-pr-dark shadow-[4px_4px_0_#111]'].join(' ')}>
-                      <span className="text-2xl">{r === 'minority' ? '🦄' : '🐑'}</span>
-                      <span className="font-bold text-sm" style={{ fontFamily: 'var(--font-dm)' }}>
-                        {r === 'minority' ? t('loseRuleMinority') : t('loseRuleMajority')}
-                      </span>
-                      <span className="text-xs text-center opacity-70">
-                        {r === 'minority' ? t('loseRuleMinorityDesc') : t('loseRuleMajorityDesc')}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              )} />
-            </div>
-          )}
 
           {/* Play mode */}
           <div className="flex flex-col gap-3">
