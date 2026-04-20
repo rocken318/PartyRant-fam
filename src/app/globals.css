@@ -46,12 +46,14 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  /* PartyRant brand colors */
-  --color-pr-pink: #FF0080;
-  --color-pr-yellow: #FFD600;
-  --color-pr-green: #00C472;
-  --color-pr-blue: #3B82F6;
-  --color-pr-dark: #111111;
+  /* PartyRant Family brand colors */
+  --color-pf-green:  #00C472;
+  --color-pf-yellow: #FFD600;
+  --color-pf-blue:   #3B82F6;
+  --color-pf-dark:   #1A1A2E;
+  /* legacy aliases: existing components pick up new colors without edits */
+  --color-pr-pink: #00C472;
+  --color-pr-dark: #1A1A2E;
   /* PartyRant fonts */
   --font-bebas: var(--font-bebas);
   --font-dm: var(--font-dm);
