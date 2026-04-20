@@ -119,7 +119,7 @@ export default function GuestGameClient({ code }: Props) {
     const q = game.questions[game.currentQuestionIndex];
     if (!q) return;
     const startedAt = game.currentQuestionStartedAt ?? Date.now();
-    const limitMs = q.timeLimitSec * 1000;
+    const limitMs = (q.timeLimitSec + (game.mode === 'trivia' ? 10 : 0)) * 1000;
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       const elapsed = Date.now() - startedAt;
@@ -309,7 +309,7 @@ export default function GuestGameClient({ code }: Props) {
     const token = answerTokenRef.current;
     const questionId = q.id;
     const correctIndex = q.correctIndex;
-    const timeLimitSec = q.timeLimitSec;
+    const timeLimitSec = q.timeLimitSec + (game.mode === 'trivia' ? 10 : 0);
     const gameMode = game.mode;
     selectedChoiceRef.current = choiceIndex;
     setSelectedChoice(choiceIndex);
@@ -465,7 +465,7 @@ export default function GuestGameClient({ code }: Props) {
           </div>
           <CountdownTimer
             startedAt={startedAt}
-            timeLimitSec={q.timeLimitSec}
+            timeLimitSec={q.timeLimitSec + (game.mode === 'trivia' ? 10 : 0)}
             onExpired={() => {
               if (selectedChoice !== null) setGuestState('answered');
               else setTimedOut(true);
