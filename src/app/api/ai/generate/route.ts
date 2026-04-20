@@ -90,23 +90,26 @@ export async function POST(req: NextRequest) {
 
     const prompt = buildPrompt(theme, mode, count);
 
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const client = new OpenAI({
+      apiKey: process.env.GOOGLE_AI_API_KEY,
+      baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+    });
     const completion = await client.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gemini-2.5-flash-preview-05-20',
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
-      temperature: 0.9,
+      temperature: 1,
     });
 
     const content = completion.choices[0]?.message?.content;
-    if (!content) throw new Error('Empty response from OpenAI');
+    if (!content) throw new Error('Empty response from Gemini');
 
     let raw: unknown;
     try {
       raw = JSON.parse(content);
     } catch {
-      console.error('OpenAI returned invalid JSON:', content.slice(0, 200));
-      throw new Error('Invalid JSON from OpenAI');
+      console.error('Gemini returned invalid JSON:', content.slice(0, 200));
+      throw new Error('Invalid JSON from Gemini');
     }
     const questions = validateQuestions(raw).slice(0, count);
 
