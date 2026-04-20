@@ -1,6 +1,5 @@
-export type GameType = 'trivia' | 'polling' | 'opinion';   // what kind of game
-export type LoseRule = 'minority' | 'majority';  // opinion mode: who loses
-export type PlayMode = 'live' | 'self_paced';  // how it's played
+export type GameType = 'trivia' | 'polling';   // opinion removed
+export type PlayMode = 'live' | 'self_paced';
 
 /** @deprecated use GameType */
 export type GameMode = GameType;
@@ -12,14 +11,55 @@ export type GameStatus =
   | 'reveal'
   | 'ended';
 
+export type Subject =
+  | 'japanese'   // 国語
+  | 'math'       // 算数/数学
+  | 'science'    // 理科
+  | 'social'     // 社会
+  | 'english'    // 英語
+  | 'ethics';    // 道徳
+
+export const SUBJECT_LABELS: Record<Subject, string> = {
+  japanese: '国語',
+  math:     '算数・数学',
+  science:  '理科',
+  social:   '社会',
+  english:  '英語',
+  ethics:   '道徳',
+};
+
+export const SUBJECT_ICONS: Record<Subject, string> = {
+  japanese: '📖',
+  math:     '🔢',
+  science:  '🔬',
+  social:   '🌏',
+  english:  '🇬🇧',
+  ethics:   '💭',
+};
+
+// grade: 1=小1 … 6=小6, 7=中1 … 9=中3, 10=高1 … 12=高3
+export const GRADE_LABELS: Record<number, string> = {
+  1: '小1', 2: '小2', 3: '小3', 4: '小4', 5: '小5', 6: '小6',
+  7: '中1', 8: '中2', 9: '中3',
+  10: '高1', 11: '高2', 12: '高3',
+};
+
+export const GRADE_GROUPS = [
+  { label: '小学生', shortLabel: '小1〜小6', min: 1, max: 6 },
+  { label: '中学生', shortLabel: '中1〜中3', min: 7, max: 9 },
+  { label: '高校生', shortLabel: '高1〜高3', min: 10, max: 12 },
+] as const;
+
 export interface Question {
   id: string;
   order: number;
   text: string;
-  imageUrl?: string;       // Supabase Storage public URL (was imageDataUrl)
+  imageUrl?: string;
   options: string[];
   correctIndex?: number;
   timeLimitSec: number;
+  grade?: number;      // 1–12 (optional for backward compat)
+  subject?: Subject;   // optional for backward compat
 }
 
 export interface Event {
@@ -40,7 +80,6 @@ export interface Game {
   description?: string;
   scene?: string;
   isPreset?: boolean;
-  loseRule?: LoseRule;
   questions: Question[];
   status: GameStatus;
   currentQuestionIndex: number;
