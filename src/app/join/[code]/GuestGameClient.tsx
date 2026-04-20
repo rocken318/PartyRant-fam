@@ -52,6 +52,7 @@ export default function GuestGameClient({ code }: Props) {
   const [localQuestionIndex, setLocalQuestionIndex] = useState(0);
   const [leaderboard, setLeaderboard] = useState<import('@/types/domain').Score[]>([]);
 
+  const [timedOut, setTimedOut] = useState(false);
   const { savePlayer, clearPlayer } = useLocalPlayer(gameId ?? '');
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -119,6 +120,7 @@ export default function GuestGameClient({ code }: Props) {
           setGame(event.game);
           setGuestState('question');
           setSelectedChoice(null);
+          setTimedOut(false);
           setTimePercent(100);
           break;
         case 'question_started':
@@ -129,6 +131,7 @@ export default function GuestGameClient({ code }: Props) {
           );
           setGuestState('question');
           setSelectedChoice(null);
+          setTimedOut(false);
           setRevealInfo(null);
           setTimePercent(100);
           break;
@@ -369,7 +372,10 @@ export default function GuestGameClient({ code }: Props) {
           <CountdownTimer
             startedAt={startedAt}
             timeLimitSec={q.timeLimitSec}
-            onExpired={() => setGuestState('answered')}
+            onExpired={() => {
+              if (selectedChoice !== null) setGuestState('answered');
+              else setTimedOut(true);
+            }}
           />
         </div>
 
@@ -395,7 +401,7 @@ export default function GuestGameClient({ code }: Props) {
                 key={i}
                 label={option}
                 index={i}
-                disabled={selectedChoice !== null}
+                disabled={selectedChoice !== null || timedOut}
                 selected={selectedChoice === i}
                 onClick={() => handleAnswer(i)}
               />
