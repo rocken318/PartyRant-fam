@@ -181,6 +181,37 @@ export default function SoloPage() {
               );
             })}
           </div>
+
+          {selected !== null && (() => {
+            const isCorrect = q.correctIndex !== undefined && selected === q.correctIndex;
+            const correctText = q.correctIndex !== undefined ? q.options[q.correctIndex] : null;
+            const isLast = currentIndex + 1 >= questions.length;
+            return (
+              <div className={[
+                'rounded-[12px] border-[3px] px-4 py-4 flex flex-col gap-3',
+                isCorrect
+                  ? 'bg-green-50 border-pf-green'
+                  : 'bg-red-50 border-red-500',
+              ].join(' ')}>
+                <p className="text-xl font-extrabold" style={{ fontFamily: 'var(--font-dm)' }}>
+                  {isCorrect ? '⭕️ 正解！' : '❌ 不正解'}
+                </p>
+                {correctText && (
+                  <p className="text-sm font-bold text-pf-dark">
+                    正解は「{correctText}」でした
+                  </p>
+                )}
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="w-full h-12 bg-pf-green text-white font-bold text-base rounded-[10px] border-[3px] border-pf-dark shadow-[4px_4px_0_#1A1A2E] active:shadow-[2px_2px_0_#1A1A2E] active:translate-x-[1px] active:translate-y-[1px] transition-[transform,box-shadow] duration-75 touch-manipulation"
+                  style={{ fontFamily: 'var(--font-dm)' }}
+                >
+                  {isLast ? '結果を見る' : '次の問題 →'}
+                </button>
+              </div>
+            );
+          })()}
         </div>
       </main>
     );
