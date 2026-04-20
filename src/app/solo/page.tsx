@@ -24,7 +24,7 @@ export default function SoloPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
-  const [answers, setAnswers] = useState<{ correct: boolean }[]>([]);
+  const [answers, setAnswers] = useState<{ correct: boolean; choiceIndex: number }[]>([]);
   const [startedAt, setStartedAt] = useState(0);
 
   const handleStart = async () => {
@@ -60,18 +60,18 @@ export default function SoloPage() {
     const q = questions[currentIndex];
     setSelected(choiceIndex);
     const correct = q.correctIndex === choiceIndex;
-    setAnswers(prev => [...prev, { correct }]);
-
-    setTimeout(() => {
-      if (currentIndex + 1 >= questions.length) {
-        setPhase('result');
-      } else {
-        setCurrentIndex(i => i + 1);
-        setSelected(null);
-        setStartedAt(Date.now());
-      }
-    }, 1200);
+    setAnswers(prev => [...prev, { correct, choiceIndex }]);
   }, [selected, questions, currentIndex]);
+
+  const handleNext = useCallback(() => {
+    if (currentIndex + 1 >= questions.length) {
+      setPhase('result');
+    } else {
+      setCurrentIndex(i => i + 1);
+      setSelected(null);
+      setStartedAt(Date.now());
+    }
+  }, [currentIndex, questions.length]);
 
   // ── Setup ──────────────────────────────────────────────────────────────
   if (phase === 'setup') {
