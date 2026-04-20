@@ -10,7 +10,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { config } from 'dotenv';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -57,6 +57,20 @@ function generateJoinCode(): string {
   return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 }
 
+// ── helpers ─ directory loader ────────────────────────────────────────────────
+
+function loadPresetsFromDir(dirPath: string): PresetGame[] {
+  const result: PresetGame[] = [];
+  const files = readdirSync(dirPath).filter(f => f.endsWith('.json'));
+  for (const f of files) {
+    const data = JSON.parse(readFileSync(join(dirPath, f), 'utf-8'));
+    const arr: PresetGame[] = (Array.isArray(data) ? data : [data])
+      .filter((item: unknown) => item !== null && typeof item === 'object' && !Array.isArray(item) && (item as PresetGame).questions !== undefined);
+    result.push(...arr);
+  }
+  return result;
+}
+
 // ── main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -72,6 +86,12 @@ async function main() {
     presets.push(...data);
     console.log(`  Loaded ${data.length} presets from ${f}`);
   }
+
+  // ── 0420b 究極の二択（500問 / 50プリセット）
+  const dir0420b = join(__dirname, '../files/partyrant_ultimate_choices_0420b');
+  const batch0420b = loadPresetsFromDir(dir0420b);
+  presets.push(...batch0420b);
+  console.log(`  Loaded ${batch0420b.length} presets from 0420b`);
 
   console.log(`Total: ${presets.length} presets to insert.`);
 
@@ -105,7 +125,6 @@ async function main() {
       host_id: null,
       join_code: generateJoinCode(),
       mode: preset.mode,
-      lose_rule: preset.loseRule ?? null,
       game_mode: 'live',
       title: preset.title,
       description: preset.description,
