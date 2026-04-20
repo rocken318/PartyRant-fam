@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import type { Game } from '@/types/domain';
+import { SUBJECT_LABELS, SUBJECT_ICONS, GRADE_GROUPS } from '@/types/domain';
+import type { Subject } from '@/types/domain';
 import PresetPreviewDrawer from '@/components/PresetPreviewDrawer';
 
 const SCENE_META: Record<string, { icon: string; color: string }> = {
@@ -24,15 +26,13 @@ const SCENE_META: Record<string, { icon: string; color: string }> = {
 };
 
 const TYPE_META: Record<string, { label: string; icon: string; color: string }> = {
-  trivia:  { label: 'クイズ',        icon: '🧠', color: '#3B82F6' },
-  polling: { label: '実態調査',     icon: '📊', color: '#FF0080' },
-  opinion: { label: '多数派/少数派', icon: '⚔️', color: '#8B5CF6' },
+  trivia:  { label: 'クイズ',    icon: '🧠', color: '#3B82F6' },
+  polling: { label: '実態調査', icon: '📊', color: '#00C472' },
 };
 
 const COUNT_OPTIONS = [5, 10, 15] as const;
 
 type SettingsMode =
-  | { type: 'opinion'; loseRule: 'minority' | 'majority'; count: number }
   | { type: 'trivia'; count: number; scene: string | null };
 
 export default function PresetsPage() {
@@ -45,10 +45,11 @@ export default function PresetsPage() {
   const [settings, setSettings] = useState<SettingsMode | null>(null);
   const [selectedScene, setSelectedScene] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedGradeGroup, setSelectedGradeGroup] = useState<{ min: number; max: number } | null>(null);
+  const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [previewPreset, setPreviewPreset] = useState<Game | null>(null);
   const [aiTheme, setAiTheme] = useState('');
-  const [aiMode, setAiMode] = useState<'trivia' | 'polling' | 'opinion'>('trivia');
-  const [aiLoseRule, setAiLoseRule] = useState<'minority' | 'majority'>('minority');
+  const [aiMode, setAiMode] = useState<'trivia' | 'polling'>('trivia');
   const [aiCount, setAiCount] = useState<5 | 10 | 15>(10);
   const [aiGenerating, setAiGenerating] = useState(false);
   const [aiError, setAiError] = useState(false);
@@ -69,7 +70,17 @@ export default function PresetsPage() {
   ) as string[];
 
   const filtered = presets.filter(p => {
-    if (selectedScene && p.scene !== selectedScene) return false;
+    if (selectedSubject) {
+      const hasSubject = p.questions.some(q => (q as { subject?: string }).subject === selectedSubject);
+      if (!hasSubject) return false;
+    }
+    if (selectedGradeGroup) {
+      const inRange = p.questions.some(q => {
+        const grade = (q as { grade?: number }).grade;
+        return grade !== undefined && grade >= selectedGradeGroup.min && grade <= selectedGradeGroup.max;
+      });
+      if (!inRange) return false;
+    }
     if (selectedType && p.mode !== selectedType) return false;
     return true;
   });
@@ -114,23 +125,6 @@ export default function PresetsPage() {
     }
   }
 
-  async function handleRandom(loseRule: 'minority' | 'majority') {
-    const count = (settings?.type === 'opinion' ? settings.count : null) ?? 10;
-    setRandomStarting(loseRule);
-    try {
-      const res = await fetch('/api/opinion/random', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ loseRule, count }),
-      });
-      if (!res.ok) throw new Error();
-      const game = await res.json() as Game;
-      router.push(`/play/${game.id}`);
-    } catch {
-      setRandomStarting(null);
-    }
-  }
-
   async function handleRandomTrivia() {
     if (!settings || settings.type !== 'trivia') return;
     setRandomStarting('majority');
@@ -160,7 +154,6 @@ export default function PresetsPage() {
           theme: aiTheme.trim(),
           mode: aiMode,
           count: aiCount,
-          ...(aiMode === 'opinion' ? { loseRule: aiLoseRule } : {}),
         }),
       });
       if (!res.ok) throw new Error();
@@ -238,11 +231,10 @@ export default function PresetsPage() {
                 {/* タイプ選択 */}
                 <div className="flex flex-col gap-1.5">
                   <p className="text-xs font-bold text-white/80 uppercase tracking-widest">{t('aiTypeLabel')}</p>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {([
                       ['trivia',  t('aiTypeTrivia')],
                       ['polling', t('aiTypePolling')],
-                      ['opinion', t('aiTypeOpinion')],
                     ] as const).map(([mode, label]) => (
                       <button
                         key={mode}
@@ -261,34 +253,6 @@ export default function PresetsPage() {
                     ))}
                   </div>
                 </div>
-
-                {/* 意見バトル：負けルール */}
-                {aiMode === 'opinion' && (
-                  <div className="flex flex-col gap-1.5">
-                    <p className="text-xs font-bold text-white/80 uppercase tracking-widest">{t('aiLoseRuleLabel')}</p>
-                    <div className="grid grid-cols-2 gap-2">
-                      {([
-                        ['minority', t('randomMinority')],
-                        ['majority', t('randomMajority')],
-                      ] as const).map(([rule, label]) => (
-                        <button
-                          key={rule}
-                          type="button"
-                          onClick={() => setAiLoseRule(rule)}
-                          className={[
-                            'h-10 rounded-[6px] text-xs font-bold border-[2px] touch-manipulation transition-colors',
-                            aiLoseRule === rule
-                              ? 'bg-white text-pr-pink border-white'
-                              : 'bg-white/10 text-white border-white/20 hover:bg-white/20',
-                          ].join(' ')}
-                          style={{ fontFamily: 'var(--font-dm)' }}
-                        >
-                          {label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
 
                 {/* 問題数 */}
                 <div className="flex flex-col gap-1.5">
@@ -331,85 +295,6 @@ export default function PresetsPage() {
                   {aiGenerating ? t('aiGenerating') : t('aiGenerateButton')}
                 </button>
               </div>
-            </div>
-
-            {/* ── 意見バトルカード ── */}
-            <div className="bg-pr-dark rounded-[10px] border-[3px] border-pr-dark shadow-[4px_4px_0_#111] overflow-hidden">
-              <div className="px-4 py-3 flex items-center gap-3">
-                <span className="text-2xl">⚔️</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-bold text-base leading-tight" style={{ fontFamily: 'var(--font-dm)' }}>
-                    {t('randomOpinionTitle')}
-                  </p>
-                  <p className="text-gray-400 text-xs mt-0.5">{t('randomOpinionSubtitle')}</p>
-                </div>
-              </div>
-
-              {/* モード選択ボタン */}
-              <div className="grid grid-cols-2 gap-0 border-t-[2px] border-white/10">
-                {(['minority', 'majority'] as const).map(rule => (
-                  <button
-                    key={rule}
-                    type="button"
-                    onClick={() => {
-                      if (settings?.type === 'opinion' && settings.loseRule === rule) {
-                        setSettings(null);
-                      } else {
-                        setSettings({ type: 'opinion', loseRule: rule, count: 10 });
-                      }
-                    }}
-                    disabled={randomStarting !== null || starting !== null}
-                    className={[
-                      'h-12 font-bold text-sm touch-manipulation transition-colors disabled:opacity-50',
-                      rule === 'minority'
-                        ? 'bg-pr-pink text-white border-r-[1px] border-white/10 hover:bg-pr-pink/90'
-                        : 'bg-white/10 text-white hover:bg-white/20',
-                      settings?.type === 'opinion' && settings.loseRule === rule
-                        ? 'ring-2 ring-inset ring-white/40'
-                        : '',
-                    ].join(' ')}
-                    style={{ fontFamily: 'var(--font-dm)' }}
-                  >
-                    {rule === 'minority' ? t('randomMinority') : t('randomMajority')}
-                  </button>
-                ))}
-              </div>
-
-              {/* 設定パネル（展開） */}
-              {settings?.type === 'opinion' && (
-                <div className="border-t-[2px] border-white/10 px-4 py-3 flex flex-col gap-3">
-                  <div className="flex flex-col gap-1.5">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('settingsCountLabel')}</p>
-                    <div className="flex gap-2">
-                      {COUNT_OPTIONS.map(n => (
-                        <button
-                          key={n}
-                          type="button"
-                          onClick={() => setSettings({ ...settings, count: n })}
-                          className={[
-                            'flex-1 h-10 rounded-[6px] text-sm font-bold border-[2px] touch-manipulation transition-colors',
-                            settings.count === n
-                              ? 'bg-pr-pink text-white border-pr-pink'
-                              : 'bg-white/10 text-white border-white/20 hover:bg-white/20',
-                          ].join(' ')}
-                          style={{ fontFamily: 'var(--font-dm)' }}
-                        >
-                          {n}問
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => handleRandom(settings.loseRule)}
-                    disabled={randomStarting !== null || starting !== null}
-                    className="w-full h-11 bg-pr-pink text-white font-bold text-sm rounded-[6px] border-[2px] border-white/20 disabled:opacity-50 touch-manipulation hover:bg-pr-pink/90 transition-colors"
-                    style={{ fontFamily: 'var(--font-dm)' }}
-                  >
-                    {randomStarting !== null ? t('randomStarting') : t('settingsConfirm')}
-                  </button>
-                </div>
-              )}
             </div>
 
             {/* ── 雑学クイズカード ── */}
@@ -501,33 +386,53 @@ export default function PresetsPage() {
               )}
             </div>
 
-            {/* ── シーンフィルター ── */}
-            {scenes.length > 0 && (
-              <div className="flex flex-col gap-1.5">
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-0.5">{t('filterSceneLabel')}</p>
-                <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none">
-                  <button
-                    onClick={() => setSelectedScene(null)}
-                    className={`flex-shrink-0 h-9 px-4 rounded-full text-xs font-bold border-[2px] border-pr-dark touch-manipulation transition-colors ${!selectedScene ? 'bg-pr-dark text-white' : 'bg-white text-pr-dark'}`}
-                    style={{ fontFamily: 'var(--font-dm)' }}>
-                    {t('filterAll')}
-                  </button>
-                  {scenes.map(scene => {
-                    const meta = SCENE_META[scene] ?? { icon: '🎉', color: '#FF0080' };
-                    const active = selectedScene === scene;
-                    return (
-                      <button key={scene}
-                        onClick={() => setSelectedScene(active ? null : scene)}
-                        className={`flex-shrink-0 h-9 px-4 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${active ? 'text-white' : 'bg-white text-pr-dark border-pr-dark'}`}
-                        style={active ? { backgroundColor: meta.color, borderColor: meta.color } : {}}
-                      >
-                        {meta.icon} {scene}
-                      </button>
-                    );
-                  })}
-                </div>
+            {/* ── 教科フィルター ── */}
+            <div className="flex flex-col gap-1.5">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-0.5">教科で絞り込む</p>
+              <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none">
+                <button
+                  onClick={() => setSelectedSubject(null)}
+                  className={`flex-shrink-0 h-9 px-4 rounded-full text-xs font-bold border-[2px] border-pf-dark touch-manipulation transition-colors ${!selectedSubject ? 'bg-pf-dark text-white' : 'bg-white text-pf-dark'}`}
+                  style={{ fontFamily: 'var(--font-dm)' }}>
+                  すべて
+                </button>
+                {(Object.keys(SUBJECT_LABELS) as Subject[]).map(sub => {
+                  const active = selectedSubject === sub;
+                  return (
+                    <button key={sub}
+                      onClick={() => setSelectedSubject(active ? null : sub)}
+                      className={`flex-shrink-0 h-9 px-4 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${active ? 'bg-pf-yellow text-pf-dark border-pf-yellow' : 'bg-white text-pf-dark border-pf-dark'}`}
+                      style={{ fontFamily: 'var(--font-dm)' }}>
+                      {SUBJECT_ICONS[sub]} {SUBJECT_LABELS[sub]}
+                    </button>
+                  );
+                })}
               </div>
-            )}
+            </div>
+
+            {/* ── 学年フィルター ── */}
+            <div className="flex flex-col gap-1.5">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-0.5">学年で絞り込む</p>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setSelectedGradeGroup(null)}
+                  className={`flex-1 h-9 rounded-full text-xs font-bold border-[2px] border-pf-dark touch-manipulation transition-colors ${!selectedGradeGroup ? 'bg-pf-dark text-white' : 'bg-white text-pf-dark'}`}
+                  style={{ fontFamily: 'var(--font-dm)' }}>
+                  すべて
+                </button>
+                {GRADE_GROUPS.map(group => {
+                  const active = selectedGradeGroup?.min === group.min;
+                  return (
+                    <button key={group.label}
+                      onClick={() => setSelectedGradeGroup(active ? null : { min: group.min, max: group.max })}
+                      className={`flex-1 h-9 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${active ? 'bg-pf-green text-white border-pf-green' : 'bg-white text-pf-dark border-pf-dark'}`}
+                      style={{ fontFamily: 'var(--font-dm)' }}>
+                      {group.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
             {/* ── タイプフィルター ── */}
             <div className="flex flex-col gap-1.5">
