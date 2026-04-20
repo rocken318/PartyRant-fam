@@ -55,6 +55,8 @@ export default function GuestGameClient({ code }: Props) {
   const [timedOut, setTimedOut] = useState(false);
   const { savePlayer, clearPlayer } = useLocalPlayer(gameId ?? '');
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Incremented on each new question to invalidate in-flight answer submissions
+  const answerTokenRef = useRef(0);
 
   useEffect(() => {
     async function load() {
@@ -117,6 +119,7 @@ export default function GuestGameClient({ code }: Props) {
     (event: GameEvent) => {
       switch (event.type) {
         case 'game_started':
+          answerTokenRef.current++;
           setGame(event.game);
           setGuestState('question');
           setSelectedChoice(null);
@@ -124,6 +127,7 @@ export default function GuestGameClient({ code }: Props) {
           setTimePercent(100);
           break;
         case 'question_started':
+          answerTokenRef.current++;
           setGame((prev) =>
             prev
               ? { ...prev, currentQuestionIndex: event.questionIndex, currentQuestionStartedAt: event.startedAt, status: 'question' }
@@ -228,6 +232,8 @@ export default function GuestGameClient({ code }: Props) {
     if (!game || !gameId || !playerId || selectedChoice !== null) return;
     const q = game.questions[game.currentQuestionIndex];
     if (!q) return;
+    // Capture token to detect if a new question starts before the fetch completes
+    const token = answerTokenRef.current;
     setSelectedChoice(choiceIndex);
     setGuestState('answered');
     const startedAt = game.currentQuestionStartedAt ?? Date.now();
@@ -238,6 +244,8 @@ export default function GuestGameClient({ code }: Props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ playerId, questionId: q.id, choiceIndex, responseTimeMs }),
       });
+      // Abort if a new question started while we were awaiting
+      if (answerTokenRef.current !== token) return;
       let pointsEarned = 0;
       if (game.mode === 'trivia' && q.correctIndex !== undefined) {
         if (choiceIndex === q.correctIndex) {
@@ -248,6 +256,8 @@ export default function GuestGameClient({ code }: Props) {
       setTotalPoints(newTotal);
       const allRes = await fetch(`/api/games/${gameId}/answers`);
       const allAnswers: Answer[] = allRes.ok ? ((await allRes.json()) as Answer[]) : [];
+      // Final check before setting reveal info
+      if (answerTokenRef.current !== token) return;
       setRevealInfo({ myChoiceIndex: choiceIndex, correctIndex: q.correctIndex, pointsEarned, totalPoints: newTotal, allAnswers });
     } catch {
       // Keep answered state even on error
