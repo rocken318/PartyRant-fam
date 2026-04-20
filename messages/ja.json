@@ -40,6 +40,8 @@
     "answerSubmitted": "回答済み！",
     "waitingForResults": "結果を待っています...",
     "changeAnswer": "← 回答を変更",
+    "correct": "正解！",
+    "wrong": "不正解...",
     "correctAnswer": "正解",
     "pointsThisRound": "今回の獲得ポイント",
     "totalPoints": "合計: {total} pt",

@@ -60,6 +60,11 @@ export default function GuestGameClient({ code }: Props) {
   // Tracks which question index we are currently displaying, used to
   // guard against stale question_ended events arriving after question_started
   const expectedQuestionIndexRef = useRef(-1);
+  // Mirrors selectedChoice synchronously so the reveal useEffect can check
+  // whether the player already answered before revealInfo is populated
+  const selectedChoiceRef = useRef<number | null>(null);
+  // Incremented on each reveal fetch to cancel stale results from previous questions
+  const revealTokenRef = useRef(0);
 
   useEffect(() => {
     async function load() {
@@ -120,19 +125,37 @@ export default function GuestGameClient({ code }: Props) {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [guestState, game]);
 
-  // Fetch answers when entering reveal without having answered
+  // Fetch answers when entering reveal without having answered.
+  // Skip if handleAnswer is still in flight (selectedChoiceRef !== null);
+  // it will set revealInfo itself when done.
+  // Derives myChoiceIndex from allAnswers by matching playerId + questionId so that
+  // refresh/reconnect during reveal or a "change answer then timeout" scenario
+  // still shows the server-recorded answer correctly.
   useEffect(() => {
     if (guestState !== 'reveal' || !game || !gameId || revealInfo !== null) return;
+    if (selectedChoiceRef.current !== null) return;
     const q = game.questions[game.currentQuestionIndex];
     if (!q) return;
+    // Capture locals before async work so stale results from a previous question
+    // can be detected and discarded.
+    revealTokenRef.current++;
+    const token = revealTokenRef.current;
+    const qId = q.id;
+    const correctIndex = q.correctIndex;
+    const currentPlayerId = playerId;
+    const currentTotal = totalPoints;
     fetch(`/api/games/${gameId}/answers`)
       .then(r => r.ok ? r.json() : [])
       .then((allAnswers: Answer[]) => {
+        if (revealTokenRef.current !== token) return; // stale — next question already started
+        const myAnswer = currentPlayerId
+          ? allAnswers.find(a => a.playerId === currentPlayerId && a.questionId === qId)
+          : undefined;
         setRevealInfo({
-          myChoiceIndex: -1,
-          correctIndex: q.correctIndex,
+          myChoiceIndex: myAnswer?.choiceIndex ?? -1,
+          correctIndex,
           pointsEarned: 0,
-          totalPoints,
+          totalPoints: currentTotal,
           allAnswers,
         });
       })
@@ -146,6 +169,7 @@ export default function GuestGameClient({ code }: Props) {
         case 'game_started':
           answerTokenRef.current++;
           expectedQuestionIndexRef.current = event.game.currentQuestionIndex;
+          selectedChoiceRef.current = null;
           setGame(event.game);
           setGuestState('question');
           setSelectedChoice(null);
@@ -155,6 +179,7 @@ export default function GuestGameClient({ code }: Props) {
         case 'question_started':
           answerTokenRef.current++;
           expectedQuestionIndexRef.current = event.questionIndex;
+          selectedChoiceRef.current = null;
           setGame((prev) =>
             prev
               ? { ...prev, currentQuestionIndex: event.questionIndex, currentQuestionStartedAt: event.startedAt, status: 'question' }
@@ -223,6 +248,7 @@ export default function GuestGameClient({ code }: Props) {
     if (!game || !gameId || !playerId) return;
     const q = game.questions[localQuestionIndex];
     if (!q) return;
+    selectedChoiceRef.current = choiceIndex;
     setSelectedChoice(choiceIndex);
     setGuestState('sp_answered');
     try {
@@ -251,6 +277,7 @@ export default function GuestGameClient({ code }: Props) {
     const nextIndex = localQuestionIndex + 1;
     if (nextIndex < game.questions.length) {
       setLocalQuestionIndex(nextIndex);
+      selectedChoiceRef.current = null;
       setSelectedChoice(null);
       setRevealInfo(null);
       setGuestState('sp_question');
@@ -263,8 +290,13 @@ export default function GuestGameClient({ code }: Props) {
     if (!game || !gameId || !playerId || selectedChoice !== null) return;
     const q = game.questions[game.currentQuestionIndex];
     if (!q) return;
-    // Capture token to detect if a new question starts before the fetch completes
+    // Capture locals before any async work so closures stay correct
     const token = answerTokenRef.current;
+    const questionId = q.id;
+    const correctIndex = q.correctIndex;
+    const timeLimitSec = q.timeLimitSec;
+    const gameMode = game.mode;
+    selectedChoiceRef.current = choiceIndex;
     setSelectedChoice(choiceIndex);
     setGuestState('answered');
     const startedAt = game.currentQuestionStartedAt ?? Date.now();
@@ -273,25 +305,31 @@ export default function GuestGameClient({ code }: Props) {
       await fetch(`/api/games/${gameId}/answers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ playerId, questionId: q.id, choiceIndex, responseTimeMs }),
+        body: JSON.stringify({ playerId, questionId, choiceIndex, responseTimeMs }),
       });
       // Abort if a new question started while we were awaiting
       if (answerTokenRef.current !== token) return;
       let pointsEarned = 0;
-      if (game.mode === 'trivia' && q.correctIndex !== undefined) {
-        if (choiceIndex === q.correctIndex) {
-          pointsEarned = 500 + Math.max(0, Math.floor(500 * (1 - responseTimeMs / (q.timeLimitSec * 1000))));
-        }
+      if (gameMode === 'trivia' && correctIndex !== undefined && choiceIndex === correctIndex) {
+        pointsEarned = 500 + Math.max(0, Math.floor(500 * (1 - responseTimeMs / (timeLimitSec * 1000))));
       }
       const newTotal = totalPoints + pointsEarned;
       setTotalPoints(newTotal);
       const allRes = await fetch(`/api/games/${gameId}/answers`);
       const allAnswers: Answer[] = allRes.ok ? ((await allRes.json()) as Answer[]) : [];
-      // Final check before setting reveal info
       if (answerTokenRef.current !== token) return;
-      setRevealInfo({ myChoiceIndex: choiceIndex, correctIndex: q.correctIndex, pointsEarned, totalPoints: newTotal, allAnswers });
+      setRevealInfo({ myChoiceIndex: choiceIndex, correctIndex, pointsEarned, totalPoints: newTotal, allAnswers });
     } catch {
-      // Keep answered state even on error
+      // POST or follow-up GET failed. Still set revealInfo with local data so the
+      // reveal screen never hangs on the loading spinner indefinitely.
+      if (answerTokenRef.current !== token) return;
+      setRevealInfo({
+        myChoiceIndex: choiceIndex,
+        correctIndex,
+        pointsEarned: 0,
+        totalPoints,
+        allAnswers: [],
+      });
     }
   }
 
@@ -471,7 +509,7 @@ export default function GuestGameClient({ code }: Props) {
           </p>
           <button
             type="button"
-            onClick={() => { setSelectedChoice(null); setRevealInfo(null); setGuestState('question'); }}
+            onClick={() => { selectedChoiceRef.current = null; setSelectedChoice(null); setRevealInfo(null); setGuestState('question'); }}
             className="text-gray-400 text-sm underline touch-manipulation"
             style={{ fontFamily: 'var(--font-dm)' }}
           >
@@ -508,18 +546,29 @@ export default function GuestGameClient({ code }: Props) {
           <div className="flex flex-col flex-1 items-center justify-center px-6 gap-5 text-center">
             <div
               className="w-24 h-24 rounded-full border-[4px] border-pr-dark shadow-[5px_5px_0_#111] flex items-center justify-center text-4xl"
-              style={{ backgroundColor: isCorrect ? '#00C472' : '#FF3B30' }}
+              style={{ backgroundColor: didAnswer ? (isCorrect ? '#00C472' : '#FF3B30') : '#888' }}
             >
-              {isCorrect ? '🎉' : '😅'}
+              {didAnswer ? (isCorrect ? '🎉' : '😅') : '？'}
             </div>
 
-            <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">{t('correctAnswer')}</p>
-            <p
-              className="text-pr-dark text-3xl"
-              style={{ fontFamily: 'var(--font-bebas)' }}
-            >
-              {correctOption}
-            </p>
+            {didAnswer && (
+              <p
+                className="font-extrabold"
+                style={{ fontFamily: 'var(--font-bebas)', fontSize: '2.8rem', lineHeight: 1, color: isCorrect ? '#00C472' : '#FF3B30' }}
+              >
+                {isCorrect ? t('correct') : t('wrong')}
+              </p>
+            )}
+
+            <div>
+              <p className="text-gray-400 font-bold uppercase tracking-widest text-xs mb-1">{t('correctAnswer')}</p>
+              <p
+                className="text-pr-dark text-3xl"
+                style={{ fontFamily: 'var(--font-bebas)' }}
+              >
+                {correctOption}
+              </p>
+            </div>
 
             <div className="w-full bg-white border-[3px] border-pr-dark shadow-[5px_5px_0_#111] rounded-[8px] px-6 py-5 flex flex-col gap-2">
               <p className="text-gray-500 text-sm font-bold uppercase tracking-widest">{t('pointsThisRound')}</p>
