@@ -258,6 +258,7 @@ export default function PresetsPage() {
                     className="w-full h-12 px-4 rounded-[6px] border-[2px] border-white/30 bg-white/20 text-white placeholder:text-white/40 text-sm font-bold focus:outline-none focus:border-white transition-colors"
                     style={{ fontFamily: 'var(--font-dm)' }}
                   />
+                  <p className="text-white/60 text-xs">{t('aiThemeHint')}</p>
                 </div>
 
                 {/* タイプ選択 */}
@@ -326,6 +327,7 @@ export default function PresetsPage() {
                 >
                   {aiGenerating ? t('aiGenerating') : t('aiGenerateButton')}
                 </button>
+                <p className="text-white/50 text-[10px] leading-relaxed">{t('aiDisclaimer')}</p>
               </div>
             </div>
 
