@@ -31,7 +31,7 @@ const SCENE_META: Record<string, { icon: string; color: string }> = {
 
 const TYPE_META: Record<string, { label: string; icon: string; color: string }> = {
   trivia:  { label: 'クイズ',    icon: '🧠', color: '#3B82F6' },
-  polling: { label: '実態調査', icon: '📊', color: '#00C472' },
+  polling: { label: '究極の二択', icon: '⚡', color: '#FF0080' },
 };
 
 const COUNT_OPTIONS = [5, 10, 15] as const;
