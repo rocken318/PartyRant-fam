@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import type { Game } from '@/types/domain';
-import { SUBJECT_LABELS, SUBJECT_ICONS, GRADE_GROUPS } from '@/types/domain';
+import { SUBJECT_LABELS, SUBJECT_ICONS, GRADE_LABELS } from '@/types/domain';
 import type { Subject } from '@/types/domain';
 import PresetPreviewDrawer from '@/components/PresetPreviewDrawer';
 import { GradeRangeSelector } from '@/components/GradeRangeSelector';
@@ -39,7 +39,7 @@ type SettingsMode = {
   count: number;
   gradeMin: number;
   gradeMax: number;
-  subject: Subject | null;
+  subjects: Subject[];
 };
 
 export default function PresetsPage() {
@@ -54,7 +54,7 @@ export default function PresetsPage() {
   const [randomError, setRandomError] = useState<string | null>(null);
   const [settings, setSettings] = useState<SettingsMode | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
-  const [selectedGradeGroup, setSelectedGradeGroup] = useState<{ min: number; max: number } | null>(null);
+  const [selectedGrade, setSelectedGrade] = useState<number | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [previewPreset, setPreviewPreset] = useState<Game | null>(null);
   const [aiTheme, setAiTheme] = useState('');
@@ -77,12 +77,12 @@ export default function PresetsPage() {
       const hasSubject = p.questions.some(q => (q as { subject?: string }).subject === selectedSubject);
       if (!hasSubject) return false;
     }
-    if (selectedGradeGroup) {
-      const inRange = p.questions.some(q => {
+    if (selectedGrade !== null) {
+      const hasGrade = p.questions.some(q => {
         const grade = (q as { grade?: number }).grade;
-        return grade !== undefined && grade >= selectedGradeGroup.min && grade <= selectedGradeGroup.max;
+        return grade === selectedGrade;
       });
-      if (!inRange) return false;
+      if (!hasGrade) return false;
     }
     if (selectedType && p.mode !== selectedType) return false;
     return true;
@@ -142,7 +142,7 @@ export default function PresetsPage() {
           count: settings.count,
           gradeMin: settings.gradeMin,
           gradeMax: settings.gradeMax,
-          subject: settings.subject,
+          subjects: settings.subjects,
         }),
       });
       if (res.status === 404) {
@@ -339,7 +339,7 @@ export default function PresetsPage() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => { setSettings(s => s?.type === 'trivia' ? null : { type: 'trivia', count: 10, gradeMin: 1, gradeMax: 12, subject: null }); setRandomError(null); }}
+                  onClick={() => { setSettings(s => s?.type === 'trivia' ? null : { type: 'trivia', count: 10, gradeMin: 1, gradeMax: 12, subjects: [] }); setRandomError(null); }}
                   disabled={randomStarting !== null || starting !== null}
                   className="flex-shrink-0 h-10 px-4 bg-pr-dark text-white font-bold text-sm rounded-[6px] border-[2px] border-pr-dark disabled:opacity-50 touch-manipulation hover:bg-pr-dark/90 transition-colors"
                   style={{ fontFamily: 'var(--font-dm)' }}
@@ -357,8 +357,10 @@ export default function PresetsPage() {
                   />
 
                   <SubjectSelector
-                    value={settings.subject}
-                    onChange={sub => setSettings({ ...settings, subject: settings.subject === sub ? null : sub })}
+                    value={null}
+                    onChange={() => {}}
+                    multiValue={settings.subjects}
+                    onMultiChange={subjects => setSettings({ ...settings, subjects })}
                     hiddenSubjects={['ethics']}
                   />
 
@@ -430,21 +432,21 @@ export default function PresetsPage() {
             {/* ── 学年フィルター ── */}
             <div className="flex flex-col gap-1.5">
               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-0.5">学年で絞り込む</p>
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none">
                 <button
-                  onClick={() => setSelectedGradeGroup(null)}
-                  className={`flex-1 h-9 rounded-full text-xs font-bold border-[2px] border-pf-dark touch-manipulation transition-colors ${!selectedGradeGroup ? 'bg-pf-dark text-white' : 'bg-white text-pf-dark'}`}
+                  onClick={() => setSelectedGrade(null)}
+                  className={`flex-shrink-0 h-9 px-3 rounded-full text-xs font-bold border-[2px] border-pf-dark touch-manipulation transition-colors ${!selectedGrade ? 'bg-pf-dark text-white' : 'bg-white text-pf-dark'}`}
                   style={{ fontFamily: 'var(--font-dm)' }}>
                   すべて
                 </button>
-                {GRADE_GROUPS.map(group => {
-                  const active = selectedGradeGroup?.min === group.min;
+                {Array.from({ length: 12 }, (_, i) => i + 1).map(grade => {
+                  const active = selectedGrade === grade;
                   return (
-                    <button key={group.label}
-                      onClick={() => setSelectedGradeGroup(active ? null : { min: group.min, max: group.max })}
-                      className={`flex-1 h-9 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${active ? 'bg-pf-green text-white border-pf-green' : 'bg-white text-pf-dark border-pf-dark'}`}
+                    <button key={grade}
+                      onClick={() => setSelectedGrade(active ? null : grade)}
+                      className={`flex-shrink-0 h-9 px-3 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${active ? 'bg-pf-green text-white border-pf-green' : 'bg-white text-pf-dark border-pf-dark'}`}
                       style={{ fontFamily: 'var(--font-dm)' }}>
-                      {group.label}
+                      {GRADE_LABELS[grade]}
                     </button>
                   );
                 })}

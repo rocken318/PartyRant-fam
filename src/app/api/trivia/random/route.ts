@@ -3,14 +3,14 @@ export const runtime = 'nodejs';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { store } from '@/lib/store';
-import type { Question } from '@/types/domain';
+import type { Question, Subject } from '@/types/domain';
 
 const schema = z.object({
   count:    z.number().int().min(3).max(20).default(10),
   scene:    z.string().nullable().optional(),
   gradeMin: z.number().int().min(1).max(12).optional(),
   gradeMax: z.number().int().min(1).max(12).optional(),
-  subject:  z.enum(['japanese', 'math', 'science', 'social', 'english', 'ethics'] as const).nullable().optional(),
+  subjects: z.array(z.enum(['japanese', 'math', 'science', 'social', 'english', 'ethics'] as const)).optional().default([]),
 });
 
 function shuffle<T>(arr: T[]): T[] {
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json({ error: parsed.error.message }, { status: 400 });
     }
-    const { count, scene, gradeMin, gradeMax, subject } = parsed.data;
+    const { count, scene, gradeMin, gradeMax, subjects } = parsed.data;
 
     const presets = await store.listPresets();
     const pool: Omit<Question, 'id' | 'order'>[] = [];
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         if (gradeMin !== undefined && gradeMax !== undefined) {
           if (q.grade === undefined || q.grade < gradeMin || q.grade > gradeMax) continue;
         }
-        if (subject && q.subject !== subject) continue;
+        if (subjects.length > 0 && !subjects.includes(q.subject as Subject)) continue;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { id: _id, order: _order, ...rest } = q;
         pool.push(rest);
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     if (pool.length === 0) {
       const totalPresets = presets.filter(p => p.mode === 'trivia').length;
       return NextResponse.json(
-        { error: 'No questions available', debug: { triviaPresets: totalPresets, gradeMin, gradeMax, subject } },
+        { error: 'No questions available', debug: { triviaPresets: totalPresets, gradeMin, gradeMax, subjects } },
         { status: 404 }
       );
     }
