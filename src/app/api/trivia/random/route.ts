@@ -49,7 +49,11 @@ export async function POST(req: NextRequest) {
     }
 
     if (pool.length === 0) {
-      return NextResponse.json({ error: 'No questions available' }, { status: 404 });
+      const totalPresets = presets.filter(p => p.mode === 'trivia').length;
+      return NextResponse.json(
+        { error: 'No questions available', debug: { triviaPresets: totalPresets, gradeMin, gradeMax, subject } },
+        { status: 404 }
+      );
     }
 
     const selected = shuffle(pool).slice(0, Math.min(count, pool.length));
