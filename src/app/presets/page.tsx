@@ -359,6 +359,7 @@ export default function PresetsPage() {
                   <SubjectSelector
                     value={settings.subject}
                     onChange={sub => setSettings({ ...settings, subject: settings.subject === sub ? null : sub })}
+                    hiddenSubjects={['ethics']}
                   />
 
                   <div className="flex flex-col gap-1.5">

@@ -6,10 +6,13 @@ import type { Subject } from '@/types/domain';
 interface Props {
   value: Subject | null;
   onChange: (subject: Subject) => void;
+  hiddenSubjects?: Subject[];
 }
 
-export function SubjectSelector({ value, onChange }: Props) {
-  const subjects = Object.keys(SUBJECT_LABELS) as Subject[];
+export function SubjectSelector({ value, onChange, hiddenSubjects }: Props) {
+  const subjects = (Object.keys(SUBJECT_LABELS) as Subject[]).filter(
+    s => !hiddenSubjects?.includes(s)
+  );
   return (
     <div className="flex flex-col gap-2">
       <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">教科</p>
