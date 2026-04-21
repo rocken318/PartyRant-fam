@@ -37,7 +37,6 @@ const COUNT_OPTIONS = [5, 10, 15] as const;
 type SettingsMode = {
   type: 'trivia';
   count: number;
-  scene: string | null;
   gradeMin: number;
   gradeMax: number;
   subject: Subject | null;
@@ -50,8 +49,8 @@ export default function PresetsPage() {
   const [loading, setLoading] = useState(true);
   const [starting, setStarting] = useState<string | null>(null);
   const [randomStarting, setRandomStarting] = useState<'minority' | 'majority' | null>(null);
+  const [randomError, setRandomError] = useState<string | null>(null);
   const [settings, setSettings] = useState<SettingsMode | null>(null);
-  const [selectedScene, setSelectedScene] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedGradeGroup, setSelectedGradeGroup] = useState<{ min: number; max: number } | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
@@ -70,12 +69,6 @@ export default function PresetsPage() {
       .then((data: Game[]) => { setPresets(data); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
-
-  const scenes = Array.from(new Set(presets.map(p => p.scene).filter(Boolean))) as string[];
-
-  const triviaScenes = Array.from(
-    new Set(presets.filter(p => p.mode === 'trivia').map(p => p.scene).filter(Boolean))
-  ) as string[];
 
   const filtered = presets.filter(p => {
     if (selectedSubject) {
@@ -136,22 +129,28 @@ export default function PresetsPage() {
   async function handleRandomTrivia() {
     if (!settings || settings.type !== 'trivia') return;
     setRandomStarting('majority');
+    setRandomError(null);
     try {
       const res = await fetch('/api/trivia/random', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           count: settings.count,
-          scene: settings.scene,
           gradeMin: settings.gradeMin,
           gradeMax: settings.gradeMax,
           subject: settings.subject,
         }),
       });
+      if (res.status === 404) {
+        setRandomError('この条件に合う問題が見つかりませんでした。学年・教科を変えてお試しください。');
+        setRandomStarting(null);
+        return;
+      }
       if (!res.ok) throw new Error();
       const game = await res.json() as Game;
       router.push(`/play/${game.id}`);
     } catch {
+      setRandomError('問題の取得に失敗しました。もう一度お試しください。');
       setRandomStarting(null);
     }
   }
@@ -323,7 +322,7 @@ export default function PresetsPage() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setSettings(s => s?.type === 'trivia' ? null : { type: 'trivia', count: 10, scene: null, gradeMin: 1, gradeMax: 12, subject: null })}
+                  onClick={() => { setSettings(s => s?.type === 'trivia' ? null : { type: 'trivia', count: 10, gradeMin: 1, gradeMax: 12, subject: null }); setRandomError(null); }}
                   disabled={randomStarting !== null || starting !== null}
                   className="flex-shrink-0 h-10 px-4 bg-pr-dark text-white font-bold text-sm rounded-[6px] border-[2px] border-pr-dark disabled:opacity-50 touch-manipulation hover:bg-pr-dark/90 transition-colors"
                   style={{ fontFamily: 'var(--font-dm)' }}
@@ -367,35 +366,10 @@ export default function PresetsPage() {
                     </div>
                   </div>
 
-                  {triviaScenes.length > 0 && (
-                    <div className="flex flex-col gap-1.5">
-                      <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('settingsSceneLabel')}</p>
-                      <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none">
-                        <button
-                          type="button"
-                          onClick={() => setSettings({ ...settings, scene: null })}
-                          className={`flex-shrink-0 h-8 px-3 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${settings.scene === null ? 'bg-pr-dark text-white border-pr-dark' : 'bg-white text-pr-dark border-pr-dark hover:bg-gray-50'}`}
-                          style={{ fontFamily: 'var(--font-dm)' }}
-                        >
-                          {t('settingsSceneAll')}
-                        </button>
-                        {triviaScenes.map(scene => {
-                          const active = settings.scene === scene;
-                          const meta = SCENE_META[scene] ?? { icon: '🎉', color: '#FF0080' };
-                          return (
-                            <button
-                              key={scene}
-                              type="button"
-                              onClick={() => setSettings({ ...settings, scene: active ? null : scene })}
-                              className={`flex-shrink-0 h-8 px-3 rounded-full text-xs font-bold border-[2px] touch-manipulation transition-colors ${active ? 'text-white' : 'bg-white text-pr-dark border-pr-dark hover:bg-gray-50'}`}
-                              style={active ? { backgroundColor: meta.color, borderColor: meta.color } : {}}
-                            >
-                              {meta.icon} {scene}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
+                  {randomError && (
+                    <p className="text-red-500 text-sm font-bold bg-red-50 rounded-[8px] px-3 py-2">
+                      {randomError}
+                    </p>
                   )}
 
                   <button
