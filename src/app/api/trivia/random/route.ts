@@ -3,6 +3,7 @@ export const runtime = 'nodejs';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { store } from '@/lib/store';
+import { getUserFromRequest } from '@/lib/supabase/auth-server';
 import type { Question, Subject } from '@/types/domain';
 
 const schema = z.object({
@@ -23,6 +24,7 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export async function POST(req: NextRequest) {
+  const user = await getUserFromRequest(req).catch(() => null);
   try {
     const body = await req.json();
     const parsed = schema.safeParse(body);
@@ -63,6 +65,7 @@ export async function POST(req: NextRequest) {
       gameMode: 'live',
       title: '🧠 ランダム雑学クイズ',
       questions: selected,
+      hostId: user?.id,
     });
 
     const lobbyGame = await store.updateGameStatus(game.id, 'lobby');

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { store } from '@/lib/store';
+import { getUserFromRequest } from '@/lib/supabase/auth-server';
 
 export const runtime = 'nodejs';
 
@@ -24,6 +25,8 @@ export async function POST(
       options: q.options.map((opt: string) => nameMap[opt] ?? opt),
     }));
 
+    const user = await getUserFromRequest(req).catch(() => null);
+
     const game = await store.createGame({
       mode: preset.mode,
       gameMode: preset.gameMode,
@@ -31,6 +34,7 @@ export async function POST(
       description: preset.description,
       scene: preset.scene,
       questions: processedQuestions,
+      hostId: user?.id,
     });
 
     const lobbyGame = await store.updateGameStatus(game.id, 'lobby');
