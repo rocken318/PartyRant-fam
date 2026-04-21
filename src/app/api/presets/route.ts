@@ -8,8 +8,10 @@ export async function GET() {
   try {
     const all = await store.listPresets();
     const presets = all.filter(p =>
-      p.questions.length > 0 &&
-      (p.questions[0] as { grade?: number }).grade !== undefined
+      p.questions.length > 0 && (
+        (p.questions[0] as { grade?: number }).grade !== undefined ||
+        p.scene === '学生の実態調査'
+      )
     );
     return NextResponse.json(presets);
   } catch (e) {
