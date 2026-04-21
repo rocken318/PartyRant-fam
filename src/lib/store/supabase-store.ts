@@ -133,13 +133,23 @@ export class SupabaseGameStore implements GameStore {
   }
 
   async listPresets(): Promise<Game[]> {
-    const { data } = await this.db
-      .from('games')
-      .select()
-      .eq('is_preset', true)
-      .order('scene', { ascending: true })
-      .order('title', { ascending: true });
-    return (data ?? []).map(toGame);
+    const pageSize = 1000;
+    const allRows: Record<string, unknown>[] = [];
+    let offset = 0;
+    while (true) {
+      const { data, error } = await this.db
+        .from('games')
+        .select()
+        .eq('is_preset', true)
+        .order('scene', { ascending: true })
+        .order('title', { ascending: true })
+        .range(offset, offset + pageSize - 1);
+      if (error || !data || data.length === 0) break;
+      allRows.push(...data);
+      if (data.length < pageSize) break;
+      offset += pageSize;
+    }
+    return allRows.map(toGame);
   }
 
   async updateGameStatus(gameId: string, status: GameStatus, extra?: Partial<Game>): Promise<Game> {

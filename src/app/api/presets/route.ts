@@ -6,7 +6,11 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const presets = await store.listPresets();
+    const all = await store.listPresets();
+    const presets = all.filter(p =>
+      p.questions.length > 0 &&
+      (p.questions[0] as { grade?: number }).grade !== undefined
+    );
     return NextResponse.json(presets);
   } catch (e) {
     console.error(e);
