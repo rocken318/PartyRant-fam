@@ -154,25 +154,17 @@ async function main() {
   const dir = 'Y:/webwork/famquiz/generated_quizzes';
   const files = readdirSync(dir).filter(f => f.endsWith('.json')).sort();
 
-  // Clear only family-quiz presets (those whose questions have a 'grade' field).
-  // This avoids wiping party presets seeded by seed-presets.ts.
-  const { data: existing, error: listErr } = await supabase
+  // Clear only family-quiz presets (those whose questions[0] has a 'grade' field).
+  // Uses JSONB filter directly to avoid fetching all IDs (bypasses 1000-row limit).
+  const { error: delErr, count: delCount } = await supabase
     .from('games')
-    .select('id, questions')
-    .eq('is_preset', true);
-  if (listErr) {
-    console.warn('⚠ Could not list existing presets:', listErr.message);
+    .delete({ count: 'exact' })
+    .eq('is_preset', true)
+    .filter('questions->0->>grade', 'not.is', null);
+  if (delErr) {
+    console.warn('⚠ Could not clear existing family presets:', delErr.message);
   } else {
-    const famIds = (existing ?? [])
-      .filter(r => (r.questions as { grade?: number }[])?.[0]?.grade !== undefined)
-      .map(r => r.id as string);
-    if (famIds.length > 0) {
-      const { error: delErr } = await supabase.from('games').delete().in('id', famIds);
-      if (delErr) console.warn('⚠ Could not clear existing family presets:', delErr.message);
-      else console.log(`🗑  Cleared ${famIds.length} existing family presets.\n`);
-    } else {
-      console.log('🗑  No existing family presets to clear.\n');
-    }
+    console.log(`🗑  Cleared ${delCount ?? 0} existing family presets.\n`);
   }
 
   console.log(`📚 Seeding ${files.length} files (8 files at a time)...\n`);
