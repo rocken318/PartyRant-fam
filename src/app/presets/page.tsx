@@ -47,6 +47,8 @@ export default function PresetsPage() {
   const router = useRouter();
   const [presets, setPresets] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [startError, setStartError] = useState<string | null>(null);
   const [starting, setStarting] = useState<string | null>(null);
   const [randomStarting, setRandomStarting] = useState<'minority' | 'majority' | null>(null);
   const [randomError, setRandomError] = useState<string | null>(null);
@@ -65,9 +67,9 @@ export default function PresetsPage() {
 
   useEffect(() => {
     fetch('/api/presets')
-      .then(r => r.ok ? r.json() : [])
+      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
       .then((data: Game[]) => { setPresets(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .catch(() => { setLoadError(true); setLoading(false); });
   }, []);
 
   const filtered = presets.filter(p => {
@@ -112,6 +114,7 @@ export default function PresetsPage() {
 
   async function doStart(presetId: string, nameMap: Record<string, string>) {
     setStarting(presetId);
+    setStartError(null);
     try {
       const res = await fetch(`/api/presets/${presetId}/start`, {
         method: 'POST',
@@ -122,6 +125,7 @@ export default function PresetsPage() {
       const game = await res.json() as Game;
       router.push(`/play/${game.id}`);
     } catch {
+      setStartError('ゲームの開始に失敗しました。もう一度お試しください。');
       setStarting(null);
     }
   }
@@ -199,6 +203,19 @@ export default function PresetsPage() {
         {loading ? (
           <div className="flex justify-center py-20">
             <div className="w-10 h-10 border-4 border-pr-pink border-t-transparent rounded-full animate-spin" />
+          </div>
+        ) : loadError ? (
+          <div className="flex flex-col items-center gap-4 py-20 text-center">
+            <span className="text-5xl">😵</span>
+            <p className="font-bold text-gray-500">読み込みに失敗しました</p>
+            <button
+              type="button"
+              onClick={() => { setLoadError(false); setLoading(true); fetch('/api/presets').then(r => r.ok ? r.json() : Promise.reject()).then((data: Game[]) => { setPresets(data); setLoading(false); }).catch(() => { setLoadError(true); setLoading(false); }); }}
+              className="h-10 px-6 bg-pr-pink text-white font-bold text-sm rounded-[6px] border-[2px] border-pr-dark"
+              style={{ fontFamily: 'var(--font-dm)' }}
+            >
+              再読み込み
+            </button>
           </div>
         ) : presets.length === 0 ? (
           <div className="flex flex-col items-center gap-4 py-20 text-center">
@@ -457,6 +474,12 @@ export default function PresetsPage() {
                 })}
               </div>
             </div>
+
+            {startError && (
+              <p className="text-red-500 text-sm font-bold bg-red-50 rounded-[8px] px-3 py-2">
+                {startError}
+              </p>
+            )}
 
             {/* ── 件数表示 ── */}
             <p className="text-xs text-gray-400 font-bold">
